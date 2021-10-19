@@ -8,7 +8,7 @@
 ## General info
 This project is an e-commerce website.
 
-##Made-by
+## Made-by
 this project was made by:
 *Adam Amri
 *Ons Chebbi
