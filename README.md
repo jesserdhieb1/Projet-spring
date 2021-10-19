@@ -10,11 +10,11 @@ This project is an e-commerce website.
 
 ## Made-by
 this project was made by:
-*Adam Amri
-*Ons Chebbi
-*Hiba Elwafi
-*Oumayma Farhani
-*Jesser Dhieb
+* Adam Amri
+* Ons Chebbi
+* Hiba Elwafi
+* Oumayma Farhani
+* Jesser Dhieb
 
 	
 ## Technologies
