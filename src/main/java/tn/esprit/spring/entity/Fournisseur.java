@@ -2,34 +2,31 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @Table
-public class Rayon implements Serializable {
-    public Rayon() {
+public class Fournisseur implements Serializable {
+    public Fournisseur() {
     }
 
-    public Rayon(String code, String libelle) {
+    public Fournisseur(String code, String libelle) {
         this.code = code;
         this.libelle = libelle;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idRayon")
-    private Long idRayon;
+    @Column(name="idFournissuer")
+    private Long idFournissuer;
     private String code;
     private String libelle;
-    @OneToMany(mappedBy = "rayon",cascade = CascadeType.ALL)
-    private Set<Produit> produit;
 
-    public Long getIdRayon() {
-        return idRayon;
+    public Long getIdFournissuer() {
+        return idFournissuer;
     }
 
-    public void setIdRayon(Long idRayon) {
-        this.idRayon = idRayon;
+    public void setIdFournissuer(Long idFournissuer) {
+        this.idFournissuer = idFournissuer;
     }
 
     public String getCode() {
@@ -48,18 +45,10 @@ public class Rayon implements Serializable {
         this.libelle = libelle;
     }
 
-    public Set<Produit> getProduit() {
-        return produit;
-    }
-
-    public void setProduit(Set<Produit> produit) {
-        this.produit = produit;
-    }
-
     @Override
     public String toString() {
-        return "Rayon{" +
-                "idRayon=" + idRayon +
+        return "Fournisseur{" +
+                "idFournissuer=" + idFournissuer +
                 ", code='" + code + '\'' +
                 ", libelle='" + libelle + '\'' +
                 '}';
