@@ -19,7 +19,7 @@ public class Produit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idProduit")
-    private Long idClient;
+    private Long idProduit;
     private String code;
     private String libelle;
     private float prixUnitaire;
@@ -34,12 +34,12 @@ public class Produit implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Fournisseur> fornisseur;
 
-    public Long getIdClient() {
-        return idClient;
+    public Long getIdProduit() {
+        return idProduit;
     }
 
-    public void setIdClient(Long idClient) {
-        this.idClient = idClient;
+    public void setIdProduit(Long idProduit) {
+        this.idProduit = idProduit;
     }
 
     public String getCode() {
@@ -109,7 +109,7 @@ public class Produit implements Serializable {
     @Override
     public String toString() {
         return "Produit{" +
-                "idClient=" + idClient +
+                "idProduit=" + idProduit +
                 ", code='" + code + '\'' +
                 ", libelle='" + libelle + '\'' +
                 ", prixUnitaire=" + prixUnitaire +
