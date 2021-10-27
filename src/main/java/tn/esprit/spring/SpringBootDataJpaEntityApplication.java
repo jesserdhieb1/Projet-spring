@@ -8,6 +8,7 @@ public class SpringBootDataJpaEntityApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDataJpaEntityApplication.class, args);
+		//aaaaaaaaaaaaaaaaaaaaa
 	}
 
 }
