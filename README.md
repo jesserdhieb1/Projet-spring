@@ -27,4 +27,6 @@ To run this project, use:
 
 ```
 maven update project 
+
+run as java application
 ```
