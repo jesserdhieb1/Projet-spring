@@ -1,7 +1,32 @@
-mes entité dans le projet sont
-* Entité User
-* Entité Avis User
+# Projet Spring-Boot 
+## Table of contents
+* [General info](#general-info)
+* [Was made by :](#Made-by)
+* [Technologies](#technologies)
+* [Setup](#setup)
 
-## Shema Base de données
-voici le shema de la base de données :
-![BD](https://user-images.githubusercontent.com/73405867/138615402-a0624812-397b-4a56-a076-352548aeb246.png)
+## General info
+This project is an e-commerce website.
+
+## Made-by
+this project was made by:
+* Adam Amri
+* Ons Chebbi
+* Hiba Elwafi
+* Oumayma Farhani
+* Jesser Dhieb
+
+	
+## Technologies
+Project is created with:
+* Spring Boot
+
+	
+## Setup
+To run this project, use:
+
+```
+maven update project 
+
+run as java application
+```
