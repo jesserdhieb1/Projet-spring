@@ -1,12 +1,30 @@
 package tn.esprit.spring.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table
+@Setter
+@Getter
+@NoArgsConstructor
+@ToString
 public class AvisUser {
+
+    public AvisUser(Date datePublicationAvis, String description, int note, int NBP, int NBC) {
+        this.datePublicationAvis = datePublicationAvis;
+        this.description = description;
+        this.note = note;
+        this.NBP = NBP;
+        this.NBC = NBC;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idAvisUser")
