@@ -4,10 +4,19 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import java.io.Serializable;
 
 @Entity
 @Table(name="EntreeStock")
-public class EntreeStock {
+@Setter
+@Getter
+@NoArgsConstructor
+@ToString
+public class EntreeStock implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idEntreeStock")
@@ -15,35 +24,10 @@ public class EntreeStock {
     private int qte;
     private Date dateEntree;
     private String libelleStock;
-    @OneToMany (mappedBy ="sE")
+    @OneToMany (mappedBy ="EntreeStock")
     private List<Produit> pE;
     @OneToOne
     private Fournisseur f;
 
-    public long getIdStock() {
-        return idEntreeStock;
-    }
-    public void setIdStock(long idStock) {
-        this.idEntreeStock = idStock;
-    }
-    public int getQte() {
-        return qte;
-    }
-    public void setQte(int qte) {
-        this.qte = qte;
-    }
-
-    public String getLibelleStock() {
-        return libelleStock;
-    }
-    public void setLibelleStock(String libelleStock) {
-        this.libelleStock = libelleStock;
-    }
-    public Date getDateEntree() {
-        return dateEntree;
-    }
-    public void setDateEntree(Date dateEntree) {
-        this.dateEntree = dateEntree;
-    }
 
 }

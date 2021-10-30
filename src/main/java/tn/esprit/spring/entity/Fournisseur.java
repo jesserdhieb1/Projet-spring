@@ -2,9 +2,17 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table
+@Setter
+@Getter
+@NoArgsConstructor
+@ToString
 public class Fournisseur implements Serializable {
     public Fournisseur() {
     }
@@ -21,36 +29,4 @@ public class Fournisseur implements Serializable {
     private String code;
     private String libelle;
 
-    public Long getIdFournissuer() {
-        return idFournissuer;
-    }
-
-    public void setIdFournissuer(Long idFournissuer) {
-        this.idFournissuer = idFournissuer;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-
-    @Override
-    public String toString() {
-        return "Fournisseur{" +
-                "idFournissuer=" + idFournissuer +
-                ", code='" + code + '\'' +
-                ", libelle='" + libelle + '\'' +
-                '}';
-    }
 }
