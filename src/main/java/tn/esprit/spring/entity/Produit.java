@@ -28,7 +28,9 @@ public class Produit implements Serializable {
     @ManyToOne
     private Rayon rayon;
     @ManyToOne
-    private Stock stock;
+    private EntreeStock EntreeStock;
+    @ManyToOne
+    private SortieStock SortieStock;
     @OneToOne
     private DetailProduit Detailproduit;
     @ManyToMany(cascade = CascadeType.ALL)
@@ -84,15 +86,7 @@ public class Produit implements Serializable {
     public void setRayon(Rayon rayon) {
         this.rayon = rayon;
     }
-
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
-
+    
     public DetailProduit getDetailproduit() {
         return Detailproduit;
     }
