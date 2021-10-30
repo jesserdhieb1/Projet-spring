@@ -11,8 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
-@Table(name="SortieStock")
+@Table
+@Setter
+@Getter
+@NoArgsConstructor
+@ToString
 public class SortieStock {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,32 +30,7 @@ public class SortieStock {
     private int qte;
     private Date dateSortie;
     private String libelleStock;
-    @OneToMany (mappedBy ="sS")
+    @OneToMany (mappedBy ="SortieStock")
     private List<Produit> pS;
-    public long getIdStock() {
-        return idSortieStock;
-    }
-    public void setIdStock(long idStock) {
-        this.idSortieStock = idStock;
-    }
-    public int getQte() {
-        return qte;
-    }
-    public void setQte(int qte) {
-        this.qte = qte;
-    }
-
-
-    public String getLibelleStock() {
-        return libelleStock;
-    }
-    public void setLibelleStock(String libelleStock) {
-        this.libelleStock = libelleStock;
-    }
-    public Date getDateEntree() {
-        return dateSortie;
-    }
-    public void setDateEntree(Date dateEntree) {
-        this.dateSortie = dateEntree;
-    }
+  
 }
