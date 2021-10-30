@@ -28,16 +28,16 @@ public class Produit implements Serializable {
     @ManyToOne
     private Rayon rayon;
     @ManyToOne
-    private Stock stock;
+    private EntreeStock EntreeStock;
+    @ManyToOne
+    private SortieStock SortieStock;
     @OneToOne
     private DetailProduit Detailproduit;
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Fournisseur> fornisseur;
-<<<<<<< HEAD
-=======
+
     @OneToMany(mappedBy = "produit_avis",cascade = CascadeType.ALL)
     private Set<AvisUser> avisProduit;
->>>>>>> jesser
 
     public Long getIdProduit() {
         return idProduit;
@@ -85,14 +85,6 @@ public class Produit implements Serializable {
 
     public void setRayon(Rayon rayon) {
         this.rayon = rayon;
-    }
-
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
     }
 
     public DetailProduit getDetailproduit() {
