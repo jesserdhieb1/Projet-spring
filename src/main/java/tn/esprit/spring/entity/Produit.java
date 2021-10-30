@@ -33,11 +33,9 @@ public class Produit implements Serializable {
     private DetailProduit Detailproduit;
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Fournisseur> fornisseur;
-<<<<<<< HEAD
-=======
+
     @OneToMany(mappedBy = "produit_avis",cascade = CascadeType.ALL)
     private Set<AvisUser> avisProduit;
->>>>>>> jesser
 
     public Long getIdProduit() {
         return idProduit;

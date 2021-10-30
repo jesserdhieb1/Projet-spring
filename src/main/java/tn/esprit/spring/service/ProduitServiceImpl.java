@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import tn.esprit.spring.entity.Client;
 import tn.esprit.spring.entity.Produit;
 
 import tn.esprit.spring.repository.ProduitRepository;
