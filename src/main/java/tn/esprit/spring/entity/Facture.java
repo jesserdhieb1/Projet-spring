@@ -11,12 +11,20 @@ public class Facture implements Serializable {
     public Facture() {
     }
 
+<<<<<<< HEAD
+    public Facture(float montantRemise, float montantFacture, Date dateFacture, boolean active, Client client) {
+=======
     public Facture(float montantRemise, float montantFacture, Date dateFacture, boolean active, User user) {
+>>>>>>> jesser
         this.montantRemise = montantRemise;
         this.montantFacture = montantFacture;
         this.dateFacture = dateFacture;
         this.active = active;
+<<<<<<< HEAD
+        this.client = client;
+=======
         this.user = user;
+>>>>>>> jesser
     }
 
     @Id
@@ -30,7 +38,11 @@ public class Facture implements Serializable {
     private boolean active;
 
     @ManyToOne
+<<<<<<< HEAD
+    private Client client;
+=======
     private User user;
+>>>>>>> jesser
 
     @OneToMany(mappedBy = "facture",cascade = CascadeType.ALL)
     private Set<DetailFacture> detailFacture;
@@ -75,12 +87,21 @@ public class Facture implements Serializable {
         this.active = active;
     }
 
+<<<<<<< HEAD
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+=======
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+>>>>>>> jesser
     }
 
     public Set<DetailFacture> getDetailFacture() {
@@ -99,7 +120,11 @@ public class Facture implements Serializable {
                 ", montantFacture=" + montantFacture +
                 ", dateFacture=" + dateFacture +
                 ", active=" + active +
+<<<<<<< HEAD
+                ", client=" + client +
+=======
                 ", user=" + user +
+>>>>>>> jesser
                 '}';
     }
 }
