@@ -14,8 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Fournisseur implements Serializable {
-    public Fournisseur() {
-    }
+
 
     public Fournisseur(String code, String libelle) {
         this.code = code;
