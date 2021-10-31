@@ -15,8 +15,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Rayon implements Serializable {
-    public Rayon() {
-    }
 
     public Rayon(String code, String libelle) {
         this.code = code;
