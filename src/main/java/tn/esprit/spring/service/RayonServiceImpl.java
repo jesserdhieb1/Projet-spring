@@ -32,6 +32,7 @@ public class RayonServiceImpl implements RayonService {
 	@Override
 	public Rayon updateRayon(Rayon u) {
 		// TODO Auto-generated method stub
+		RR.save(u);
 		return u;
 	}
 
