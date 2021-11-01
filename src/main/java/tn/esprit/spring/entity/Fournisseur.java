@@ -16,7 +16,14 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(of= {"idFournissuer","code","libelle"})
 public class Fournisseur implements Serializable {
-  
+
+
+
+    public Fournisseur(String code, String libelle) {
+        this.code = code;
+        this.libelle = libelle;
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

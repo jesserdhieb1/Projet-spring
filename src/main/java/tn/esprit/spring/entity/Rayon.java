@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @ToString(of={"idRayon","code","libelle","produit"})
 public class Rayon implements Serializable {
-   
+
 
 
     @Id
