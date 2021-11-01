@@ -9,13 +9,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import java.io.Serializable;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name="EntreeStock")
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
+@AllArgsConstructor
+@ToString(of= {"idEntreeStock","qte","dateEntree","libelleStock","pE","f"})
 public class EntreeStock implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

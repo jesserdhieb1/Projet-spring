@@ -40,6 +40,7 @@ public class FournisseurServiceImpl implements FournisseurService{
 	@Override
 	public Fournisseur updateFournisseur(Fournisseur f) {
 		// TODO Auto-generated method stub
+		Fr.save(f);
 		return f;
 	}
 	

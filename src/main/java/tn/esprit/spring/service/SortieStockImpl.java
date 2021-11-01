@@ -26,6 +26,7 @@ public class SortieStockImpl implements SortieStockService{
 	@Override
 	public SortieStock updateSortieStock(SortieStock u) {
 		// TODO Auto-generated method stub
+		SSR.save(u);
 		return u;
 	}
 
