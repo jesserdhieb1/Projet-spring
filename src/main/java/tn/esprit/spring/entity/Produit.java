@@ -23,8 +23,10 @@ public class Produit implements Serializable {
     private String code;
     private String libelle;
     private float prixUnitaire;
+    
     @OneToMany(mappedBy = "produit",cascade = CascadeType.ALL)
     private Set<DetailFacture> detailFacture;
+    
     @ManyToOne
     private Rayon rayon;
     @ManyToOne
