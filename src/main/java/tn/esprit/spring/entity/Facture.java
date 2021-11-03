@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-import tn.magasins.spring.entity.Client;
-import tn.magasins.spring.entity.DetailFacture;
+import tn.esprit.spring.entity.DetailFacture;
+import tn.esprit.spring.entity.DetailFacture;
 
 import java.io.Serializable;
 import java.util.Date;
