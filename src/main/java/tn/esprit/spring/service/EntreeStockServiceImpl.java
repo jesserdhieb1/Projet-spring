@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.Repository.EntreeStockRepository;
+import tn.esprit.spring.repository.EntreeStockRepository;
 import tn.esprit.spring.entity.EntreeStock;
 
 
@@ -16,7 +16,8 @@ public class EntreeStockServiceImpl implements EntreeStockService{
 	private final EntreeStockRepository ESR;
 	@Autowired
 	public EntreeStockServiceImpl(EntreeStockRepository ESR) {
-		this.ESR=ESR;}
+		this.ESR=ESR;
+	}
 	@Override
 	public List<EntreeStock> retrieveAllEntreeStocks() {
 		// TODO Auto-generated method stub

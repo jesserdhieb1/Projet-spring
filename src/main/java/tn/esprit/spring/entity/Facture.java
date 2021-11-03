@@ -10,7 +10,6 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import tn.esprit.spring.entity.DetailFacture;
-import tn.esprit.spring.entity.DetailFacture;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -38,12 +37,8 @@ public class Facture implements Serializable {
     @Temporal(TemporalType.DATE)
     Date dateFacture;
     boolean active;
-
     @ManyToOne
-
     User user;
-
-
     @OneToMany(mappedBy = "facture",cascade = CascadeType.ALL)
     Set<DetailFacture> detailFacture;
 

@@ -46,11 +46,11 @@ public class DetailProduit implements Serializable {
         this.dateDerniereModification = dateDerniereModification;
     }
 
-    public tn.esprit.spring.enumeration.CategorieProduit getCategorieProduit() {
+    public CategorieProduit getCategorieProduit() {
         return CategorieProduit;
     }
 
-    public void setCategorieProduit(tn.esprit.spring.enumeration.CategorieProduit categorieProduit) {
+    public void setCategorieProduit(CategorieProduit categorieProduit) {
         CategorieProduit = categorieProduit;
     }
 
