@@ -88,7 +88,7 @@ public class Produit implements Serializable {
     public void setRayon(Rayon rayon) {
         this.rayon = rayon;
     }
-    
+
     public DetailProduit getDetailproduit() {
         return Detailproduit;
     }
