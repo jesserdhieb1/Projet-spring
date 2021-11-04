@@ -45,3 +45,4 @@ public class Produit implements Serializable {
     private Set<AvisUser> avisProduit;
 
 
+}
