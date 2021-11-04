@@ -17,7 +17,7 @@ import lombok.ToString;
 @ToString
 
 public class Produit implements Serializable {
-   
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +26,10 @@ public class Produit implements Serializable {
     private String code;
     private String libelle;
     private float prixUnitaire;
-    
+
     @OneToMany(mappedBy = "produit",cascade = CascadeType.ALL)
     private Set<DetailFacture> detailFacture;
-    
+
     @ManyToOne
     private Rayon rayon;
     @ManyToOne
@@ -45,4 +45,3 @@ public class Produit implements Serializable {
     private Set<AvisUser> avisProduit;
 
 
-}
