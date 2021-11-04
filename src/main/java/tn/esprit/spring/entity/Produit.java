@@ -44,5 +44,5 @@ public class Produit implements Serializable {
     @OneToMany(mappedBy = "produit_avis",cascade = CascadeType.ALL)
     private Set<AvisUser> avisProduit;
 
-   
+
 }
