@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.FieldDefaults;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table

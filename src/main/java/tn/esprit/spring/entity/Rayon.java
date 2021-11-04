@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.AllArgsConstructor;
-import lombok.FieldDefaults;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table
