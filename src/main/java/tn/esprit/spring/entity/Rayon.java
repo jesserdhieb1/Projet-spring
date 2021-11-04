@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.AllArgsConstructor;
+import lombok.FieldDefaults;
+
 @Entity
 @Table
 @Setter
@@ -15,6 +17,7 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(of={"idRayon","code","libelle","produit"})
+@FieldDefaults(level=AccessLevel.PRIVATE)
 public class Rayon implements Serializable {
 
 
@@ -22,11 +25,11 @@ public class Rayon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idRayon")
-    private Long idRayon;
-    private String code;
-    private String libelle;
+    Long idRayon;
+    String code;
+     String libelle;
     @OneToMany(mappedBy = "rayon",cascade = CascadeType.ALL)
-    private Set<Produit> produit;
+    Set<Produit> produit;
 
    
 }

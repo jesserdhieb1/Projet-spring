@@ -10,7 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
-
+import lombok.FieldDefaults;
 @Entity
 @Table(name="EntreeStock")
 @Setter
@@ -18,18 +18,19 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(of= {"idEntreeStock","qte","dateEntree","libelleStock","pE","f"})
+@FieldDefaults(level=AccessLevel.PRIVATE)
 public class EntreeStock implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idEntreeStock")
-    private long idEntreeStock;
-    private int qte;
-    private Date dateEntree;
-    private String libelleStock;
+     long idEntreeStock;
+    int qte;
+    Date dateEntree;
+     String libelleStock;
     @OneToMany (mappedBy ="EntreeStock")
-    private List<Produit> pE;
+    List<Produit> pE;
     @OneToOne
-    private Fournisseur f;
+     Fournisseur f;
 
 
 }
