@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Fournisseur;
-import tn.esprit.spring.Repository.FournisseurRepository;
+import tn.esprit.spring.repository.FournisseurRepository;
 
 @Service
 public class FournisseurServiceImpl implements FournisseurService{
@@ -40,6 +40,7 @@ public class FournisseurServiceImpl implements FournisseurService{
 	@Override
 	public Fournisseur updateFournisseur(Fournisseur f) {
 		// TODO Auto-generated method stub
+		Fr.save(f);
 		return f;
 	}
 	

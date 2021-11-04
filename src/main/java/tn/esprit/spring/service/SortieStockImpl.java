@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.Repository.SortieStockRepository;
+import tn.esprit.spring.repository.SortieStockRepository;
 import tn.esprit.spring.entity.SortieStock;
 
 @Service
@@ -26,6 +26,7 @@ public class SortieStockImpl implements SortieStockService{
 	@Override
 	public SortieStock updateSortieStock(SortieStock u) {
 		// TODO Auto-generated method stub
+		SSR.save(u);
 		return u;
 	}
 

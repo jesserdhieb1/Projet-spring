@@ -4,46 +4,33 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.FieldDefaults;
 @Entity
 @Table(name="EntreeStock")
-public class EntreeStock {
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(of= {"idEntreeStock","qte","dateEntree","libelleStock","pE","f"})
+@FieldDefaults(level=AccessLevel.PRIVATE)
+public class EntreeStock implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idEntreeStock")
-    private long idEntreeStock;
-    private int qte;
-    private Date dateEntree;
-    private String libelleStock;
-    @OneToMany (mappedBy ="sE")
-    private List<Produit> pE;
+     long idEntreeStock;
+    int qte;
+    Date dateEntree;
+     String libelleStock;
+    @OneToMany (mappedBy ="EntreeStock")
+    List<Produit> pE;
     @OneToOne
-    private Fournisseur f;
+     Fournisseur f;
 
-    public long getIdStock() {
-        return idEntreeStock;
-    }
-    public void setIdStock(long idStock) {
-        this.idEntreeStock = idStock;
-    }
-    public int getQte() {
-        return qte;
-    }
-    public void setQte(int qte) {
-        this.qte = qte;
-    }
-
-    public String getLibelleStock() {
-        return libelleStock;
-    }
-    public void setLibelleStock(String libelleStock) {
-        this.libelleStock = libelleStock;
-    }
-    public Date getDateEntree() {
-        return dateEntree;
-    }
-    public void setDateEntree(Date dateEntree) {
-        this.dateEntree = dateEntree;
-    }
 
 }
