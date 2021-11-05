@@ -9,4 +9,3 @@ public interface FournisseurRepository  extends  CrudRepository<Fournisseur, Lon
 
 
 }
-//aaaaaaaaaaaaaaaaaaaaaaaa

@@ -39,7 +39,7 @@ public class Facture implements Serializable {
     boolean active;
     @ManyToOne
     User user;
-    @OneToMany(mappedBy = "facture",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "f",cascade = CascadeType.ALL)
     Set<DetailFacture> detailFacture;
 
     

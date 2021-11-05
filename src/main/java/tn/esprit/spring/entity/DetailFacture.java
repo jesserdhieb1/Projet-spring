@@ -33,7 +33,10 @@ public class DetailFacture implements Serializable {
     int porcentageRemise;
     float montantRemise;
     @ManyToOne
-    Facture facture;
+    Facture f;
     @ManyToOne
     Produit produit;
+    @ManyToOne
+    Panier p;
+    
 }
