@@ -13,22 +13,22 @@ import lombok.AllArgsConstructor;
 
 import lombok.experimental.FieldDefaults;
 @Entity
-@Table(name="EntreeStock")
+@Table(name="Stock")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of= {"idEntreeStock","qte","dateEntree","libelleStock","pE","f"})
+@ToString(of= {"iStock","qte","date","libelleStock","pE","f"})
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public class EntreeStock implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idEntreeStock")
-     long idEntreeStock;
+    @Column(name="idStock")
+     long idStock;
     int qte;
-    Date dateEntree;
+    Date date;
      String libelleStock;
-    @OneToMany (mappedBy ="EntreeStock")
+    @OneToMany (mappedBy ="Stock")
     List<Produit> pE;
     @OneToOne
      Fournisseur f;

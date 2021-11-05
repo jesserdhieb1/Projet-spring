@@ -33,9 +33,8 @@ public class Produit implements Serializable {
     @ManyToOne
     private Rayon rayon;
     @ManyToOne
-    private EntreeStock EntreeStock;
-    @ManyToOne
-    private SortieStock SortieStock;
+    private Stock Stock;
+
     @OneToOne
     private DetailProduit Detailproduit;
     @ManyToMany(cascade = CascadeType.ALL)
