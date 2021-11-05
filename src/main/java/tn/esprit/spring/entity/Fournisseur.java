@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -12,14 +13,17 @@ import lombok.ToString;
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
+@AllArgsConstructor
+@ToString(of= {"idFournissuer","code","libelle"})
 public class Fournisseur implements Serializable {
+
 
 
     public Fournisseur(String code, String libelle) {
         this.code = code;
         this.libelle = libelle;
     }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

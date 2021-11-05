@@ -15,13 +15,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+import lombok.AllArgsConstructor;
 @Entity
 @Table
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
+@AllArgsConstructor
+@ToString(of= {"idSortieStock","qte","dateSortie","libelleStock","pS"})
 public class SortieStock {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

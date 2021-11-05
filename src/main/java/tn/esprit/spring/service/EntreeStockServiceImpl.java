@@ -34,6 +34,7 @@ public class EntreeStockServiceImpl implements EntreeStockService{
 	@Override
 	public EntreeStock updateEntreeStock(EntreeStock u) {
 		// TODO Auto-generated method stub
+		ESR.save(u);
 		return u;
 	}
 
