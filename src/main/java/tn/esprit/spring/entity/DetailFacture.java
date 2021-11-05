@@ -9,10 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.spring.entity.Facture;
-import tn.esprit.spring.entity.Panier;
-import tn.esprit.spring.entity.Produit;
-
 import java.io.Serializable;
 
 @Entity
@@ -37,7 +33,10 @@ public class DetailFacture implements Serializable {
     int porcentageRemise;
     float montantRemise;
     @ManyToOne
-    Facture facture;
+    Facture f;
     @ManyToOne
     Produit produit;
+    @ManyToOne
+    Panier p;
+    
 }
