@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 @Entity
 @Table
