@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 @Entity
 @Table
 @Setter
@@ -23,15 +24,16 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(of= {"idSortieStock","qte","dateSortie","libelleStock","pS"})
+@FieldDefaults(level=AccessLevel.PRIVATE)
 public class SortieStock {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idSortieStock")
-    private long idSortieStock;
-    private int qte;
-    private Date dateSortie;
-    private String libelleStock;
+    long idSortieStock;
+    int qte;
+    Date dateSortie;
+    String libelleStock;
     @OneToMany (mappedBy ="SortieStock")
-    private List<Produit> pS;
+     List<Produit> pS;
   
 }

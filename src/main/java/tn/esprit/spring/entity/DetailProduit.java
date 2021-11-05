@@ -34,4 +34,4 @@ public class DetailProduit implements Serializable {
     private Produit produit;
 
 
-   }
+}

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table
@@ -15,6 +16,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(of= {"idFournissuer","code","libelle"})
+@FieldDefaults(level=AccessLevel.PRIVATE)
 public class Fournisseur implements Serializable {
 
 
@@ -28,8 +30,8 @@ public class Fournisseur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idFournissuer")
-    private Long idFournissuer;
-    private String code;
-    private String libelle;
+     Long idFournissuer;
+     String code;
+    String libelle;
 
 }
