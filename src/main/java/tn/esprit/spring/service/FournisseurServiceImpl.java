@@ -43,7 +43,11 @@ public class FournisseurServiceImpl implements FournisseurService{
 		Fr.save(f);
 		return f;
 	}
-	
+	@Override
+	public Optional<Fournisseur> retrieveFournisseur(Long id) {
+		// TODO Auto-generated method stub
+		return Fr.findById(id);
+	}
 	
 
 }
