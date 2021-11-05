@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.Repository.RayonRepository;
+import tn.esprit.spring.repository.RayonRepository;
 import tn.esprit.spring.entity.Rayon;
 
 @Service

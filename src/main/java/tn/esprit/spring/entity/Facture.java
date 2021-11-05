@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-import tn.magasins.spring.entity.Client;
-import tn.magasins.spring.entity.DetailFacture;
+import tn.esprit.spring.entity.User;
+import tn.esprit.spring.entity.DetailFacture;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -44,7 +44,7 @@ public class Facture implements Serializable {
     User user;
 
 
-    @OneToMany(mappedBy = "facture",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "f",cascade = CascadeType.ALL)
     Set<DetailFacture> detailFacture;
 
     

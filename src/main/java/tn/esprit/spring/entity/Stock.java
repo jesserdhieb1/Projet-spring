@@ -23,7 +23,7 @@ public class Stock implements Serializable {
     private int qte;
     private int qteMin;
     private String libelleStock;
-    @OneToMany(mappedBy = "stock",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "s",cascade = CascadeType.ALL)
     private Set<Produit> produit;
 
     public Long getIdStock() {
