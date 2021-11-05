@@ -20,20 +20,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Livreur implements Serializable {
-	
-	
-public Livreur(String nomLiv, String prenomLiv, String villeLiv, String adresseLiv, String mdpLiv, int telLiv,
-			Double lngLiv, Double latLiv) {
-		
-		NomLiv = nomLiv;
-		PrenomLiv = prenomLiv;
-		VilleLiv = villeLiv;
 		AdresseLiv = adresseLiv;
 		MdpLiv = mdpLiv;
-		TelLiv = telLiv;
-		LngLiv = lngLiv;
-		LatLiv = latLiv;
-	}
 
 @Autowired
 @Id
