@@ -34,7 +34,7 @@ public class Panier {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long idPanier;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="panier")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="p")
 	 Set<DetailFacture> detailFacture;
 	
 	 long prixTotal;
