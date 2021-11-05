@@ -10,6 +10,8 @@ import lombok.Setter;
 import lombok.ToString;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+
 
 import lombok.experimental.FieldDefaults;
 @Entity
@@ -28,7 +30,7 @@ public class Stock implements Serializable  {
     int qte;
     Date date;
      String libelleStock;
-    @OneToMany (mappedBy ="Stock")
+    @OneToMany (mappedBy ="s")
     List<Produit> pE;
     @OneToOne
      Fournisseur f;

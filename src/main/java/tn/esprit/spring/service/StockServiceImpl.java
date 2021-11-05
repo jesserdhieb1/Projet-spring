@@ -25,7 +25,7 @@ public class StockServiceImpl implements StockService{
 	}
 
 	@Override
-	public EntreeStock addStock(Stock s) {
+	public Stock addStock(Stock s) {
 		// TODO Auto-generated method stub
 		ESR.save(s);
 		return s;
