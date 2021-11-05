@@ -27,15 +27,20 @@ public class DetailFacture implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idDetailFacture")
+    
     Long idDetailFacture;
+    
     int qte;
     float prixTotal;
     int porcentageRemise;
     float montantRemise;
+    
     @ManyToOne
     Facture f;
+    
     @ManyToOne
     Produit produit;
+    
     @ManyToOne
     Panier p;
     
