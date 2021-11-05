@@ -17,7 +17,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.spring.entity.DetailFacture;
 
 @Entity
 @Table(name="panier")
