@@ -30,7 +30,7 @@ public class Stock implements Serializable  {
     int qte;
     Date date;
      String libelleStock;
-    @OneToMany (mappedBy ="Stock")
+    @OneToMany (mappedBy ="s")
     List<Produit> pE;
     @OneToOne
      Fournisseur f;
