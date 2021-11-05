@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.spring.entity.User;
 import tn.esprit.spring.entity.DetailFacture;
+import tn.esprit.spring.entity.User;
 
 import java.io.Serializable;
 import java.util.Date;
