@@ -35,4 +35,4 @@ public class DetailProduit implements Serializable {
     @OneToOne(mappedBy = "Detailproduit",cascade = CascadeType.ALL)
     private Produit produit;
 
-}
+}//oikkk

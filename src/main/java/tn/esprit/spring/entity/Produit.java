@@ -19,7 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 public class Produit implements Serializable {
-   
+   //aaa
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idProduit")
