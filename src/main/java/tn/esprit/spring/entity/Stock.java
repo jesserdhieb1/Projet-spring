@@ -10,6 +10,8 @@ import lombok.Setter;
 import lombok.ToString;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+
 
 import lombok.experimental.FieldDefaults;
 @Entity
