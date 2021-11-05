@@ -16,7 +16,8 @@ public class EntreeStockServiceImpl implements EntreeStockService{
 	private final EntreeStockRepository ESR;
 	@Autowired
 	public EntreeStockServiceImpl(EntreeStockRepository ESR) {
-		this.ESR=ESR;}
+		this.ESR=ESR;
+	}
 	@Override
 	public List<EntreeStock> retrieveAllEntreeStocks() {
 		// TODO Auto-generated method stub
