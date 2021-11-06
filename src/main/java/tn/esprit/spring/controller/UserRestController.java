@@ -1,5 +1,5 @@
 package tn.esprit.spring.controller;
 
-public class UserController {
+public class UserRestController {
 
 }
