@@ -3,12 +3,15 @@ package tn.esprit.spring.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.repository.LivreurRepository;
-
+import tn.esprit.spring.repository.UserRepository;
+@Service
 public class LivreurServiceImpl implements LivreurService {
 	private final LivreurRepository lr;
+	
 	@Autowired
 	public LivreurServiceImpl(LivreurRepository lr) {
 		this.lr=lr;
