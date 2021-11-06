@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.service.LivreurService;
+import tn.esprit.spring.service.LivreurServiceImpl;
 
 @RestController
 @RequestMapping("/livreur")
 public class LivreurRestController {
 	@Autowired
-	LivreurService livreurService;
+	LivreurServiceImpl livreurService;
 
 	// http://localhost:8089/SpringMVC/livreur/retrieve-all-livreurs
 	@GetMapping("/retrieve-all-livreurs")
