@@ -1,12 +1,14 @@
 package tn.esprit.spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceImp implements UserService{
 
     private final UserRepository userRepository;
