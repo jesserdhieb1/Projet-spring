@@ -19,7 +19,7 @@ public class UserRestController {
         return userService.retrivaAllUsers();
     }
 
-    @GetMapping("/retrive-all-users/{user-id}")
+    @GetMapping("/retrive-user/{user-id}")
     public Optional<User> retriveUser(@PathVariable("user-id") Long id){
         return userService.retriveUser(id);
     }
