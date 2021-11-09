@@ -38,7 +38,10 @@ public class PanierServiceImp implements PanierService {
 		return Optional.ofNullable(this.pr.findById(id).get());
 
 	}
-
+	@Override
+	public void deletePanier(Long id) {
+		this.pr.deleteById(id);
+	}
 	
 	
 
