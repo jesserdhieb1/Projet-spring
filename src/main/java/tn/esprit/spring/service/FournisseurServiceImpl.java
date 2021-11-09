@@ -1,7 +1,7 @@
 package tn.esprit.spring.service;
 import java.util.List;
 
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +43,11 @@ public class FournisseurServiceImpl implements FournisseurService{
 		Fr.save(f);
 		return f;
 	}
-	
+	@Override
+	public Optional<Fournisseur> retrieveFournisseur(Long id) {
+		// TODO Auto-generated method stub
+		return Fr.findById(id);
+	}
 	
 
 }

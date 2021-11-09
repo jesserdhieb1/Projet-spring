@@ -1,7 +1,7 @@
 package tn.esprit.spring.service;
 
 import java.util.List;
-
+import java.util.Optional;
 import tn.esprit.spring.entity.Fournisseur;
 
 public interface FournisseurService {
@@ -12,5 +12,6 @@ public interface FournisseurService {
 	void deleteFournisseur(Long id);
 
 	Fournisseur updateFournisseur(Fournisseur f);
+	Optional<Fournisseur> retrieveFournisseur(Long id);
 
 }
