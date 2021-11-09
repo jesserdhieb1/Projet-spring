@@ -9,6 +9,6 @@ public interface PanierService {
 	List<Panier> getAllPanier();
 	Panier addPanier(Panier p);
 	Panier updatePanier(Panier p);
-
+	void deletePanier(Long id);
 	Optional<Panier> retrievePanier(Long id);
 }
