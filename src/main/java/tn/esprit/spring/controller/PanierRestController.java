@@ -18,7 +18,8 @@ import tn.esprit.spring.service.PanierServiceImp;
 
 @RestController
 @RequestMapping("/panier")
-public class PanierController {
+
+public class PanierRestController {
 	@Autowired  
 	PanierServiceImp panierServImp;
 	
@@ -52,5 +53,5 @@ public class PanierController {
 	public Panier modifyClient(@RequestBody Panier p) {
 		return this.panierServImp.updatePanier(p);
 	}
-	
+
 }
