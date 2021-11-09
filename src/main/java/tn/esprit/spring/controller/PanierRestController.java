@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +25,14 @@ public class PanierRestController {
 	PanierServiceImp panierServImp;
 	
 	
-	// http://localhost:8089/SpringMVC/panier/retrieve-all-paniers
+	// http://localhost:8090/SpringMVC/servelet/panier/retrieve-all-paniers
 	@GetMapping("/retrieve-all-paniers")
 	@ResponseBody
 	List<Panier> getAllPaniers(){
 		return this.panierServImp.getAllPanier();
 	}
 	
-	// http://localhost:8089/SpringMVC/panier/retrieve-panier/{panierId}
+	// http://localhost:8090/SpringMVC/servelet/panier/retrieve-panier/{panierId}
 	@GetMapping("/retrieve-panier/{panierId}")  
 	@ResponseBody
 	private Optional<Panier> getPanier(@PathVariable("panierId") Long panierId)   
@@ -39,19 +40,27 @@ public class PanierRestController {
 		return this.panierServImp.retrievePanier(panierId);  
 	}
 	
-	// http://localhost:8089/SpringMVC/panier/remove-panier/{panierId}
+	// http://localhost:8090/SpringMVC/servelet/panier/remove-panier/{panierId}
 	@DeleteMapping("/remove-panier/{panierId}")  
 	@ResponseBody
-	private void deleteBook(@PathVariable("bookid") Long panierId)   
+	private void deletePanier(@PathVariable("panierId") Long panierId)   
 	{  
 		this.panierServImp.deletePanier(panierId);  
 	}
 	
-	// http://localhost:8089/SpringMVC/panier/modify-panier	
+	// http://localhost:8090/SpringMVC/servelet/panier/modify-panier	
 	@PutMapping("/modify-panier")
 	@ResponseBody
-	public Panier modifyClient(@RequestBody Panier p) {
+	public Panier modifyPanier(@RequestBody Panier p) {
 		return this.panierServImp.updatePanier(p);
 	}
+	
+	// http://localhost:8090/SpringMVC/servelet/panier/add-panier	
+		@PostMapping("/add-panier")
+		@ResponseBody
+		public Panier addPanier(@RequestBody Panier p) {
+			return this.panierServImp.addPanier(p);
+		}
 
+	
 }
