@@ -9,7 +9,5 @@ import org.springframework.stereotype.Repository;
 import tn.esprit.spring.entity.Panier;
 @Repository
 public interface PanierRepository extends CrudRepository<Panier, Long> {
-	@Modifying
-	@Query("update Panier p set p.prixTotal = :panierPar.prixTotal ")
-	Panier updatePanierPrixTotal(@Param("panierPar")Panier panierPar); 
+	
 }
