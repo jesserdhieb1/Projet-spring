@@ -12,43 +12,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.Stock;
 import tn.esprit.spring.service.StockServiceImpl;
+
 
 @RestController
 @RequestMapping("/stock")
 public class StockRestController {
 	@Autowired
-	StockServiceImpl stockService;
+	StockServiceImpl StockService;
 	// http://localhost:8089/SpringMVC/stock/retrieve-all-stocks
 	@GetMapping("/retrieve-all-stocks")
 	@ResponseBody
+	@ApiOperation(value = "Récupérer la liste des stocks")
 	public List<Stock> getStocks() {
-		List<Stock> listStocks = stockService.retrieveAllStocks();
+		List<Stock> listStocks = StockService.retrieveAllStocks();
 		return listStocks;
 
 	}
 	// http://localhost:8089/SpringMVC/stock/retrieve-stock/8
 		@GetMapping("/retrieve-stock/{stock-id}")
 		@ResponseBody
+		@ApiOperation(value = "Récupérer les données de stock")
 		public Optional<Stock> retrieveStock(@PathVariable("stock-id") Long stockId) {
-		return stockService.retrieveStock(stockId);
+		return StockService.retrieveStock(stockId);
 		}
 
 		// http://localhost:8089/SpringMVC/stock/add-stock
 		@PostMapping("/add-stock")
 		@ResponseBody
+		@ApiOperation(value = "Ajouter stock")
 		public Stock addStock(@RequestBody Stock c)
 		{
-			Stock stock = stockService.addStock(c);
+			Stock stock = StockService.addStock(c);
 		return stock;
 		}
 		// http://localhost:8089/SpringMVC/stock/modify-stock
 		@PutMapping("/modify-stock")
 		@ResponseBody
+		@ApiOperation(value = "Modifier stock")
 		public Stock modifyStock(@RequestBody Stock stock) {
-		return stockService.updateStock(stock);
+		return StockService.updateStock(stock);
 		}
-	
-	
 }
+
