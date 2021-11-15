@@ -30,7 +30,7 @@ public class PanierServiceImp implements PanierService {
 
 	@Override
 	public Panier updatePanier(Panier p) {
-		this.pr.updatePanierPrixTotal(p);
+		this.pr.save(p);
 		return p;
 	}
 
