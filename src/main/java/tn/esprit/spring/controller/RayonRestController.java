@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.Rayon;
 import tn.esprit.spring.service.RayonServiceImpl;
 
@@ -19,35 +20,38 @@ import tn.esprit.spring.service.RayonServiceImpl;
 @RequestMapping("/rayon")
 public class RayonRestController {
 	@Autowired
-	RayonServiceImpl rayonService;
+	RayonServiceImpl RayonService;
 	// http://localhost:8089/SpringMVC/rayon/retrieve-all-rayons
 	@GetMapping("/retrieve-all-rayons")
 	@ResponseBody
+	@ApiOperation(value = "Récupérer la liste des rayons")
 	public List<Rayon> getRayons() {
-		List<Rayon> listRayons = rayonService.retrieveAllRayons();
+		List<Rayon> listRayons = RayonService.retrieveAllRayons();
 		return listRayons;
 
 	}
 	// http://localhost:8089/SpringMVC/rayon/retrieve-rayon/8
 		@GetMapping("/retrieve-rayon/{rayon-id}")
 		@ResponseBody
+		@ApiOperation(value = "Récupérer les données de rayon")
 		public Optional<Rayon> retrieveRayon(@PathVariable("rayon-id") Long rayonId) {
-		return rayonService.retrieveRayon(rayonId);
+		return RayonService.retrieveRayon(rayonId);
 		}
 
 		// http://localhost:8089/SpringMVC/rayon/add-rayon
 		@PostMapping("/add-rayon")
 		@ResponseBody
+		@ApiOperation(value = "Ajouter rayon")
 		public Rayon addRayon(@RequestBody Rayon c)
 		{
-			Rayon rayon = rayonService.addRayon(c);
+			Rayon rayon = RayonService.addRayon(c);
 		return rayon;
 		}
 		// http://localhost:8089/SpringMVC/rayon/modify-rayon
 		@PutMapping("/modify-rayon")
 		@ResponseBody
+		@ApiOperation(value = "Modifier rayon")
 		public Rayon modifyRayon(@RequestBody Rayon rayon) {
-		return rayonService.updateRayon(rayon);
+		return RayonService.updateRayon(rayon);
 		}
-
 }
