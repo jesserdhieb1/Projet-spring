@@ -15,34 +15,40 @@ import tn.esprit.spring.repository.ProduitRepository;
 public class ProduitServiceImpl implements ProduitService{
 	
 	
-	private final ProduitRepository PR ;
+	
 	 @Autowired
-	    public ProduitServiceImpl(ProduitRepository PR){this.PR=PR;}
+	    ProduitRepository produitRepository;
+	    
+		@Override
+	    public Produit addProduit(Produit produit) {
+	        produitRepository.save(produit);
+			return produit;
+
+
+	    }
+
+	    
+		@Override
+	    public Produit getProduitById(long id) {
+	        return  produitRepository.findById(id).get();
+	    }
+		@Override
+		public List<Produit> retrieveAllProduits(){
+			return (List<Produit>)produitRepository.findAll();
+		}
+
+
+
+
 
 
 	@Override
-	public List<Produit> retrieveAllProduits() {
-		// TODO Auto-generated method stub
-		return (List<Produit>)PR.findAll();
+	public Produit updateProduit(Produit p) {
+		return produitRepository.save(p);
 	}
 
 	@Override
-	public Produit addProduit(Produit p, Long idRayon, Long idStock) {
-		// TODO Auto-generated method stub
-		
-		PR.save(p);
-		
-        return p;
-		
+	public void deleteProduit(long idProduit) {
+		produitRepository.deleteById(idProduit);
 	}
-
-
-	
-	
-	@Override
-	public Optional<Produit> retrieveProduit(Long id) {
-		// TODO Auto-generated method stub
-		return PR.findById(id);
-	}
-
 }
