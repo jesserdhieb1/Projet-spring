@@ -7,11 +7,12 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 public interface ProduitService {
-	
+	Produit addProduit(Produit produit);
+
+	Produit getProduitById(long id);
+
 	List<Produit> retrieveAllProduits();
-
-	Produit addProduit(Produit p, Long idRayon, Long idStock);
-
-	 Optional<Produit>  retrieveProduit(Long id);
+	public Produit updateProduit(Produit p);
+	public void deleteProduit(long idProduit);
 
 }

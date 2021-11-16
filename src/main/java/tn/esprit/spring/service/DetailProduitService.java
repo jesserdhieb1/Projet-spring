@@ -1,9 +1,19 @@
 package tn.esprit.spring.service;
 
-import tn.esprit.spring.entity.DetailProduit;;
+import tn.esprit.spring.entity.DetailProduit;
+import java.util.List;
+import java.util.Optional;
 
 public interface DetailProduitService {
-	void addDetailProduit(DetailProduit detailProduit);
-    DetailProduit getDetailProduitById(long id);
+	
+	List<DetailProduit> retrieveAllDetailProduits();
 
+	DetailProduit addDetailProduit(DetailProduit c);
+
+	void deleteDetailProduit(Long id);
+	DetailProduit updateDetailProduit(DetailProduit c);
+	Optional<DetailProduit> retrieveDetailProduit(Long id);
+
+	
+	
 }
