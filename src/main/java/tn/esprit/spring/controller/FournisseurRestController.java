@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.Fournisseur;
 import tn.esprit.spring.service.FournisseurServiceImpl;
 
@@ -25,6 +26,7 @@ public class FournisseurRestController {
 	// http://localhost:8089/SpringMVC/fournisseur/retrieve-all-fournisseurs
 	@GetMapping("/retrieve-all-fournisseurs")
 	@ResponseBody
+	@ApiOperation(value = "Récupérer la liste des fournisseurs")
 	public List<Fournisseur> getFournisseurs() {
 	List<Fournisseur> listFournisseurs = fournisseurService.retrieveAllFournisseurs();
 	return listFournisseurs;
@@ -33,6 +35,7 @@ public class FournisseurRestController {
 	// http://localhost:8089/SpringMVC/fournisseur/retrieve-fournisseur/8
 	@GetMapping("/retrieve-fournisseur/{fournisseur-id}")
 	@ResponseBody
+	@ApiOperation(value = "Récupérer les données de fournisseur")
 	public Optional<Fournisseur> retrieveFournisseur(@PathVariable("fournisseur-id") Long fournisseurId) {
 	return fournisseurService.retrieveFournisseur(fournisseurId);
 	}
@@ -40,6 +43,7 @@ public class FournisseurRestController {
 	// http://localhost:8089/SpringMVC/fournisseur/add-fournisseur
 	@PostMapping("/add-fournisseur")
 	@ResponseBody
+	@ApiOperation(value = "Ajouter fournisseurs")
 	public Fournisseur addFournisseur(@RequestBody Fournisseur c)
 	{
 		Fournisseur fournisseur = fournisseurService.addFournisseur(c);
@@ -48,6 +52,7 @@ public class FournisseurRestController {
 	// http://localhost:8089/SpringMVC/fournisseur/remove-fournisseur/{fournisseur-id}
 	@DeleteMapping("/remove-fournisseur/{fournisseur-id}")
 	@ResponseBody
+	@ApiOperation(value = "Supprimer fournisseur")
 	public void removeFournisseur(@PathVariable("fournisseur-id") Long fournisseurId) {
 		fournisseurService.deleteFournisseur(fournisseurId);
 	}
@@ -55,8 +60,8 @@ public class FournisseurRestController {
 	// http://localhost:8089/SpringMVC/fournisseur/modify-fournisseur
 	@PutMapping("/modify-fournisseur")
 	@ResponseBody
+	@ApiOperation(value = "Modifier fournisseur")
 	public Fournisseur modifyFournisseur(@RequestBody Fournisseur fournisseur) {
 	return fournisseurService.updateFournisseur(fournisseur);
 	}
-
 }

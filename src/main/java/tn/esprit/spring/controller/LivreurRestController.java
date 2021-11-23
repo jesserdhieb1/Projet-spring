@@ -22,7 +22,7 @@ public class LivreurRestController {
 	@Autowired
 	LivreurServiceImpl livreurService;
 
-	// http://localhost:8089/SpringMVC/livreur/retrieve-all-livreurs
+	// http://localhost:8090/SpringMVC/livreur/retrieve-all-livreurs
 	@GetMapping("/retrieve-all-livreurs")
 	@ResponseBody
 	public List<Livreur> getlivreurs() {
@@ -31,7 +31,7 @@ public class LivreurRestController {
 	}
 	
 
-   // Ajouter Livreur : http://localhost:8089/SpringMVC/livreur/add-livreur
+   // Ajouter Livreur : http://localhost:8090/SpringMVC/livreur/add-livreur
 		  @PostMapping("/add-livreur")
 		  @ResponseBody
 		  public Livreur addLivreur(@RequestBody Livreur u) {
@@ -40,19 +40,25 @@ public class LivreurRestController {
 		  }
 		  
 		  
-	// http://localhost:8089/SpringMVC/livreur/remove-livreur/{livreur-id}
+	// http://localhost:8090/SpringMVC/livreur/remove-livreur/{livreur-id}
 		   @DeleteMapping("/remove-livreur/{livreur-id}")
 		   @ResponseBody
-		   public void removeLivreur(@PathVariable("Livreur-id") Long LivreurId) {
+		   public void removeLivreur(@PathVariable("livreur-id") Long LivreurId) {
 		   livreurService.deleteLivreur(LivreurId);
 		   }
 		  
-   // http://localhost:8089/SpringMVC/livreur/modify-Livreur
+   // http://localhost:8090/SpringMVC/livreur/modify-Livreur
 		   @PutMapping("/modify-livreur")
 		   @ResponseBody
 		   public Livreur modifyLivreur(@RequestBody Livreur Livreur) {
 		   return livreurService.updateLivreur(Livreur);
 		   }
-	
+	  
+		// http://localhost:8090/SpringMVC/livreur/retrieve-livreur/{livreur-id}
+			 @GetMapping("/retrieve-livreur/{livreur-id}")
+			 @ResponseBody
+			 public Livreur retrievelivreur(@PathVariable("livreur-id") Long livreurId) {
+			 return livreurService.retrieveLivreur(livreurId);
+			  }
 	
 }
