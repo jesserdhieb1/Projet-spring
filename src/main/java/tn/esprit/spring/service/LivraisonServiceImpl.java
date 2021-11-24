@@ -1,11 +1,13 @@
 package tn.esprit.spring.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Livraison;
+import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.repository.LivraisonRepository;
 @Service
 
@@ -39,8 +41,22 @@ public class LivraisonServiceImpl implements LivraisonService {
 
 	@Override
 	public Livraison retrieveLivraison(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Livraison lv = lvr.findById(id).get();
+		return lv;	
+	}
+	@Override
+	public List<Livraison> FindByIdLivreur(Long id) {
+		return (List<Livraison>) lvr.findByIdLivreur(id);
+
+	}
+	@Override
+	public List<Livraison> findByDate(Date d) {
+		return (List<Livraison>) lvr.findByDate(d);
+	}
+	@Override
+	public List<Livraison> orderByDate() {
+		return (List<Livraison>)lvr.orderByDate();
+
 	}
 
 }
