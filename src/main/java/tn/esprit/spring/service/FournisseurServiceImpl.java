@@ -48,6 +48,36 @@ public class FournisseurServiceImpl implements FournisseurService{
 		// TODO Auto-generated method stub
 		return Fr.findById(id);
 	}
+
+	@Override
+	public List<Fournisseur> findByLibelle(String Libelle) {
+		// TODO Auto-generated method stub
+		return (List<Fournisseur>)Fr.findByLibelle(Libelle);
+	}
+
+	@Override
+	public List<Fournisseur> findByCode(String Code) {
+		// TODO Auto-generated method stub
+		return (List<Fournisseur>)Fr.findByCode(Code);
+	}
+
+	@Override
+	public List<Fournisseur> findByAdresse(String Adresse) {
+		// TODO Auto-generated method stub
+		return (List<Fournisseur>)Fr.findByAdresse(Adresse);
+	}
+
+	@Override
+	public List<Fournisseur> sortUp() {
+		// TODO Auto-generated method stub
+		return (List<Fournisseur>)Fr.SortUp();
+	}
+
+	@Override
+	public List<Fournisseur> sortDown() {
+		// TODO Auto-generated method stub
+		return (List<Fournisseur>)Fr.SortDown();
+	}
 	
 
 }

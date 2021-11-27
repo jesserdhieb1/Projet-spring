@@ -1,4 +1,5 @@
 package tn.esprit.spring.service;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -6,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.repository.StockRepository;
+import tn.esprit.spring.entity.Fournisseur;
 import tn.esprit.spring.entity.Stock;
 
 
@@ -42,6 +44,11 @@ public class StockServiceImpl implements StockService{
 	public Optional<Stock> retrieveStock(Long id) {
 		// TODO Auto-generated method stub
 		return ESR.findById(id);
+	}
+	@Override
+	public List<Stock> findByDate(Date date) {
+		// TODO Auto-generated method stub
+		return (List<Stock>)ESR.findByDate(date);
 	}
 
 }
