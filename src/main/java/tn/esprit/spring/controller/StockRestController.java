@@ -1,4 +1,5 @@
 package tn.esprit.spring.controller;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,5 +56,12 @@ public class StockRestController {
 		public Stock modifyStock(@RequestBody Stock stock) {
 		return StockService.updateStock(stock);
 		}
+		// http://localhost:8089/SpringMVC/stock/retrouver-stock-parDate/08-22-1997
+				@GetMapping("/retrouver-stock-parDate/{stock-date}")
+				@ResponseBody
+				@ApiOperation(value = "Récupérer les  stocks par date")
+				public List<Stock> findByDate(@PathVariable("stock-date") Date stockdate) {
+				return StockService.findByDate(stockdate);
+				}
 }
 
