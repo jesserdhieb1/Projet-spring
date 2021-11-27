@@ -59,4 +59,12 @@ public class LivraisonRestController {
 			 public Livraison retrievelivraison(@PathVariable("livraison-id") Long livraisonId) {
 			 return livraisonService.retrieveLivraison(livraisonId);
 			  }
+			 
+			// http://localhost:8090/SpringMVC/livraison/GetLivraisonByIdLivreur/{livreur-id}
+			 @GetMapping("/GetLivraisonByIdLivreur/{livreur-id}")
+			 @ResponseBody
+			 public List<Livraison> GetLivraisonByIdLivreur(@PathVariable("livreur-id") int id) {
+				 List<Livraison> listlivraisons = livraisonService.FindByIdLivreur(Long.valueOf(id));
+					return listlivraisons;			 
+				 }
 }
