@@ -2,6 +2,7 @@ package tn.esprit.spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.spring.entity.Facture;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.enumeration.CategorieUser;
 import tn.esprit.spring.enumeration.Role;
@@ -9,6 +10,7 @@ import tn.esprit.spring.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserServiceImp implements UserService{
@@ -77,6 +79,20 @@ public class UserServiceImp implements UserService{
     @Override
     public User ChangeCategorie(CategorieUser categorie, Long id) {
         return userRepository.ChangeCategorie(categorie,id);
+    }
+
+    @Override
+    public User AssignFactureToUser(Facture F, Long idUser) {
+        Optional<User> U =userRepository.findById(idUser);
+        if (U.isPresent()){
+           Set<Facture> Factures= U.get().getFacture();
+           F.setUser(U.get());
+           Factures.add(F);
+           U.get().setFacture(Factures);
+           userRepository.save(U.get());
+           return U.get();
+        }
+        return null;
     }
 
 
