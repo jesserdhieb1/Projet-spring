@@ -1,5 +1,6 @@
 package tn.esprit.spring.service;
 
+import tn.esprit.spring.entity.Facture;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.enumeration.CategorieUser;
 import tn.esprit.spring.enumeration.Role;
@@ -18,4 +19,5 @@ public interface UserService {
     boolean Authontification(String email,String passwd);
     User ChangeRole(Role role,Long id);
     User ChangeCategorie(CategorieUser categorie, Long id);
+    User AssignFactureToUser(Facture F,Long idUser );
 }
