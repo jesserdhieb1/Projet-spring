@@ -32,6 +32,7 @@ public class Fournisseur implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idFournissuer")
      Long idFournissuer;
+	 String adresse;
      String code;
     String libelle;
 
