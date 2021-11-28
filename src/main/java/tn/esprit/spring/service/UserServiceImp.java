@@ -119,5 +119,14 @@ public class UserServiceImp implements UserService{
         return null;
     }
 
+    @Override
+    public Set<AvisUser> AfficherAvisParUser(Long idUser) {
+        Optional<User> U =userRepository.findById(idUser);
+        if (U.isPresent()){
+            return U.get().getAvisUser();
+        }
+        return null;
+    }
+
 
 }

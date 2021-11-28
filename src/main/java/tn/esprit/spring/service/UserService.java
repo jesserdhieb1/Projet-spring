@@ -24,4 +24,5 @@ public interface UserService {
     User AssignFactureToUser(Facture F,Long idUser );
     Set<Facture> AfficherFacturesParUser(Long idUser);
     User AssignAvisToUser(AvisUser A, Long idUser );
+    Set<AvisUser> AfficherAvisParUser(Long idUser);
 }
