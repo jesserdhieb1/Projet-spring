@@ -1,6 +1,8 @@
 package tn.esprit.spring.service;
 
 import tn.esprit.spring.entity.User;
+import tn.esprit.spring.enumeration.CategorieUser;
+import tn.esprit.spring.enumeration.Role;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,4 +16,6 @@ public interface UserService {
     Optional<User> FindUserByEmail(String email);
     boolean MailExists(String email);
     boolean Authontification(String email,String passwd);
+    User ChangeRole(Role role,Long id);
+    User ChangeCategorie(CategorieUser categorie, Long id);
 }
