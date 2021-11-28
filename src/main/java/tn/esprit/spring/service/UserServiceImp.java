@@ -42,4 +42,24 @@ public class UserServiceImp implements UserService{
     public Optional<User> retriveUser(Long id) {
         return userRepository.findById(id);
     }
+
+    @Override
+    public User FindUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public boolean MailExists(String email) {
+        if (userRepository.findByEmail(email).getEmail()==email){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean Authontification(String email, String passwd) {
+        return false;
+    }
+
+
 }
