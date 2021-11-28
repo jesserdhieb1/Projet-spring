@@ -7,6 +7,7 @@ import tn.esprit.spring.enumeration.Role;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface UserService {
     List<User> retrivaAllUsers();
@@ -20,4 +21,5 @@ public interface UserService {
     User ChangeRole(Role role,Long id);
     User ChangeCategorie(CategorieUser categorie, Long id);
     User AssignFactureToUser(Facture F,Long idUser );
+    Set<Facture> AfficherFacturesParUser(Long idUser);
 }
