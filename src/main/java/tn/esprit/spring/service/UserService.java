@@ -1,5 +1,6 @@
 package tn.esprit.spring.service;
 
+import tn.esprit.spring.entity.AvisUser;
 import tn.esprit.spring.entity.Facture;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.enumeration.CategorieUser;
@@ -22,4 +23,5 @@ public interface UserService {
     User ChangeCategorie(CategorieUser categorie, Long id);
     User AssignFactureToUser(Facture F,Long idUser );
     Set<Facture> AfficherFacturesParUser(Long idUser);
+    User AssignAvisToUser(AvisUser A, Long idUser );
 }
