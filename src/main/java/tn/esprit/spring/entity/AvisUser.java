@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import tn.esprit.spring.enumeration.TypeAvis;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -35,6 +36,7 @@ public class AvisUser {
     private int note;
     private int NBP;
     private int NBC;
+    private TypeAvis type;
 
     @ManyToOne
     User user_avis;
