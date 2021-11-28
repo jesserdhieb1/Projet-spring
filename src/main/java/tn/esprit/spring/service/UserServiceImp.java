@@ -3,6 +3,8 @@ package tn.esprit.spring.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.User;
+import tn.esprit.spring.enumeration.CategorieUser;
+import tn.esprit.spring.enumeration.Role;
 import tn.esprit.spring.repository.UserRepository;
 
 import java.util.List;
@@ -65,6 +67,16 @@ public class UserServiceImp implements UserService{
             }
         }
         return false;
+    }
+
+    @Override
+    public User ChangeRole(Role role, Long id) {
+        return userRepository.ChangeRole(role,id);
+    }
+
+    @Override
+    public User ChangeCategorie(CategorieUser categorie, Long id) {
+        return userRepository.ChangeCategorie(categorie,id);
     }
 
 
