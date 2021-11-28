@@ -95,5 +95,14 @@ public class UserServiceImp implements UserService{
         return null;
     }
 
+    @Override
+    public Set<Facture> AfficherFacturesParUser(Long idUser) {
+        Optional<User> U =userRepository.findById(idUser);
+        if (U.isPresent()){
+            return U.get().getFacture();
+        }
+        return null;
+    }
+
 
 }
