@@ -44,13 +44,13 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public User FindUserByEmail(String email) {
+    public Optional<User> FindUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
     public boolean MailExists(String email) {
-        if (userRepository.findByEmail(email).getEmail()==email){
+        if (userRepository.findByEmail(email).isPresent()){
             return true;
         }
         return false;
@@ -58,6 +58,7 @@ public class UserServiceImp implements UserService{
 
     @Override
     public boolean Authontification(String email, String passwd) {
+
         return false;
     }
 

@@ -11,7 +11,7 @@ public interface UserService {
     void delteUser(Long id);
     User updateUser(User u);
     Optional<User>retriveUser(Long id);
-    User FindUserByEmail(String email);
+    Optional<User> FindUserByEmail(String email);
     boolean MailExists(String email);
     boolean Authontification(String email,String passwd);
 }
