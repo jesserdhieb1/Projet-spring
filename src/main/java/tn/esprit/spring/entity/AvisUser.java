@@ -41,6 +41,4 @@ public class AvisUser {
     @ManyToOne
     Produit produit_avis;
 
-
-
 }
