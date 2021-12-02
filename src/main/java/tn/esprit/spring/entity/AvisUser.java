@@ -4,11 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import tn.esprit.spring.enumeration.TypeAvis;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table
@@ -36,7 +34,6 @@ public class AvisUser {
     private int note;
     private int NBP;
     private int NBC;
-    private TypeAvis type;
 
     @ManyToOne
     User user_avis;
@@ -44,9 +41,6 @@ public class AvisUser {
     @ManyToOne
     Produit produit_avis;
 
-    @ManyToOne
-    AvisUser avisUser;
-   @OneToMany(mappedBy = "avisUser",cascade = CascadeType.ALL)
-   private Set<AvisUser> SousAvis;
+
 
 }
