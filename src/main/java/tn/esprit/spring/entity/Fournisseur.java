@@ -35,5 +35,4 @@ public class Fournisseur implements Serializable {
 	 String adresse;
      String code;
     String libelle;
-
 }
