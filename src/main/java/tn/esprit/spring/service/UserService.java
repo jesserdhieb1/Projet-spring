@@ -18,7 +18,6 @@ public interface UserService {
     Optional<User>retriveUser(Long id);
     Optional<User> FindUserByEmail(String email);
     boolean MailExists(String email);
-    boolean Authontification(String email,String passwd);
     User ChangeRole(Role role,Long id);
     User ChangeCategorie(CategorieUser categorie, Long id);
     User AssignFactureToUser(Facture F,Long idUser );
