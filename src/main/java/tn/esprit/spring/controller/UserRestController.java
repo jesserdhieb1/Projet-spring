@@ -41,4 +41,8 @@ public class UserRestController {
         return u;
     }
 
+    @GetMapping("/find-user-by-email")
+    public Optional<User> find_user_by_email(@RequestParam String email){
+        return userService.FindUserByEmail(email);
+    }
 }
