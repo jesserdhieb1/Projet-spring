@@ -9,6 +9,7 @@ import tn.esprit.spring.enumeration.CategorieUser;
 import tn.esprit.spring.enumeration.Role;
 import tn.esprit.spring.repository.UserRepository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -28,6 +29,10 @@ public class UserServiceImp implements UserService{
 
     @Override
     public User addUser(User u) {
+        Set<AvisUser> Avis= Collections.emptySet();
+        Set<Facture> Factures=Collections.emptySet();
+        u.setAvisUser(Avis);
+        u.setFacture(Factures);
         userRepository.save(u);
         return u;
     }
