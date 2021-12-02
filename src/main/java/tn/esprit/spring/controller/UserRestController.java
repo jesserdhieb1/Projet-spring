@@ -50,4 +50,7 @@ public class UserRestController {
     public boolean MailExists(@RequestParam String email){
         return userService.MailExists(email);
     }
+
+
+
 }

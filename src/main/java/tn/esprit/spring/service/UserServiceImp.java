@@ -66,16 +66,7 @@ public class UserServiceImp implements UserService{
         return false;
     }
 
-    @Override
-    public boolean Authontification(String email, String passwd) {
-        Optional<User> U =userRepository.findByEmail(email);
-        if (U.isPresent()){
-            if (U.get().getPassword()==passwd){
-                return true;
-            }
-        }
-        return false;
-    }
+
 
     @Override
     public User ChangeRole(Role role, Long id) {
