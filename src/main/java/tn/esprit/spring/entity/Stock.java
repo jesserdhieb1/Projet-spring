@@ -28,6 +28,7 @@ public class Stock implements Serializable  {
     @Column(name="idStock")
      long idStock;
     int qte;
+    int qteMin;
     Date date;
      String libelleStock;
     @OneToMany (mappedBy ="s")

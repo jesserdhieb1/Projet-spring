@@ -11,11 +11,9 @@ import tn.esprit.spring.entity.Rayon;
 @Service
 public class RayonServiceImpl implements RayonService {
 
-	private final RayonRepository RR;
+
 	@Autowired
-	public RayonServiceImpl(RayonRepository RR) {
-		this.RR=RR;
-	}
+	private RayonRepository RR;
 	@Override
 	public List<Rayon> retrieveAllRayons() {
 		// TODO Auto-generated method stub
