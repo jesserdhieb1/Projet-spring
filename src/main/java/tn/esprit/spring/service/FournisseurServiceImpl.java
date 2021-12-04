@@ -11,11 +11,9 @@ import tn.esprit.spring.repository.FournisseurRepository;
 @Service
 public class FournisseurServiceImpl implements FournisseurService{
 
-	private final FournisseurRepository Fr;
+	
 	@Autowired
-	public FournisseurServiceImpl(FournisseurRepository Fr) {
-		this.Fr=Fr;
-	}
+	private  FournisseurRepository Fr;
 	
 	@Override
 	public List<Fournisseur> retrieveAllFournisseurs() {

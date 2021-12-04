@@ -15,4 +15,6 @@ public interface StockService {
 	Optional<Stock> retrieveStock(Long id);
  
 	List<Stock> findByDate(Date date);
+
+	void status();
 }
