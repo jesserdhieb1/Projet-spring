@@ -40,7 +40,7 @@ public class AvisUserServiceImp implements AvisUserService{
 
     @Override
     public Optional<AvisUser> retriveAvisUser(Long id) {
-
         return avisUserRepository.findById(id);
     }
+
 }

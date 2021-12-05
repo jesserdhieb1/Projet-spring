@@ -13,5 +13,13 @@ public interface FournisseurService {
 
 	Fournisseur updateFournisseur(Fournisseur f);
 	Optional<Fournisseur> retrieveFournisseur(Long id);
-
+List<Fournisseur> findByLibelle(String Libelle);
+	
+	List<Fournisseur> findByCode(String Code);
+	
+	List<Fournisseur> findByAdresse(String Adresse);
+	
+	List<Fournisseur> sortUp();
+	
+	List<Fournisseur> sortDown();
 }

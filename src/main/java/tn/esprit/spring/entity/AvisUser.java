@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,7 +8,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table
@@ -36,15 +36,11 @@ public class AvisUser {
     private int NBP;
     private int NBC;
 
+    @JsonIgnore
     @ManyToOne
     User user_avis;
 
     @ManyToOne
     Produit produit_avis;
-
-    @ManyToOne
-    AvisUser avisUser;
-   @OneToMany(mappedBy = "avisUser",cascade = CascadeType.ALL)
-   private Set<AvisUser> SousAvis;
 
 }
