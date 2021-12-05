@@ -4,6 +4,8 @@ import tn.esprit.spring.entity.DetailProduit;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 public interface DetailProduitService {
 	
 	List<DetailProduit> retrieveAllDetailProduits();
