@@ -37,6 +37,7 @@ public class Panier {
 	 Set<DetailFacture> detailFacture;
 	
 	 long prixTotal;
+	 int nombreArticle;
 	
 	 float montantRemise;
 
