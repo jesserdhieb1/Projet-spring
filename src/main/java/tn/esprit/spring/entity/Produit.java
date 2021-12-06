@@ -2,6 +2,10 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +22,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idProduit")
 public class Produit implements Serializable {
    //aaa
     @Id
@@ -27,7 +34,8 @@ public class Produit implements Serializable {
     private String code;
     private String libelle;
     private float prixUnitaire;
-    
+   
+    @JsonManagedReference
     @OneToMany(mappedBy = "produit",cascade = CascadeType.ALL)
     private Set<DetailFacture> detailFacture;
     

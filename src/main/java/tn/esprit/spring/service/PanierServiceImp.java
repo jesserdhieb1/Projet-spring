@@ -29,7 +29,7 @@ public class PanierServiceImp implements PanierService {
 
 	@Override
 	public Panier updatePanier(Panier p) {
-		this.pr.save(p);
+		this.pr.save(p)                                    ;
 		return p;
 	}
 
