@@ -2,6 +2,12 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +26,9 @@ import java.io.Serializable;
 @ToString
 @RequiredArgsConstructor
 @FieldDefaults(level=AccessLevel.PRIVATE)
-
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idDetailFacture")
 public class DetailFacture implements Serializable {
     
 
@@ -38,9 +46,11 @@ public class DetailFacture implements Serializable {
     @ManyToOne
     Facture f;
     
+    
     @ManyToOne
     Produit produit;
     
+    @JsonBackReference
     @ManyToOne
     Panier p;
     
