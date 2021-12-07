@@ -2,6 +2,8 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -55,5 +57,7 @@ public class Produit implements Serializable {
 
     @OneToMany(mappedBy = "produit_avis",cascade = CascadeType.ALL)
     private Set<AvisUser> avisProduit;
+    @Column(columnDefinition = "int default 0")
+    private Long pourcentageRemise;
 
 }

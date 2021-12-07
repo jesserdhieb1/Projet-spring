@@ -8,12 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.DetailFacture;
+import tn.esprit.spring.entity.Facture;
+import tn.esprit.spring.entity.Produit;
 import tn.esprit.spring.repository.DetailFactureRepository;
 @Service
 public class DetailFactureServiceImp implements DetailFactureService{
 
 	@Autowired  
 	DetailFactureRepository dFR;  
+	@Autowired  
+	ProduitServiceImpl psi;
 	
 	@Override
 	public List<DetailFacture> getAllDetailFacture() {
@@ -23,11 +27,13 @@ public class DetailFactureServiceImp implements DetailFactureService{
 	}
 
 	@Override
-	public DetailFacture addDetailFacture(DetailFacture df) {
-		
+	public DetailFacture addDetailFacture(Long idProduit) {
+		DetailFacture df= new DetailFacture();
+		df.setProduit(this.psi.getProduitById(idProduit));
+		df.setPrixTotal(this.psi.getProduitById(idProduit).getPrixUnitaire()*df.getQte());
+		df.setMontantRemise((this.psi.getProduitById(idProduit).getPourcentageRemise()*df.getPrixTotal())/100);
 		this.dFR.save(df);
-		return df;
-		
+		return df; 
 	}
 
 	@Override

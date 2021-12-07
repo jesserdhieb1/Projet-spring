@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entity.Panier;
+import tn.esprit.spring.entity.User;
 import tn.esprit.spring.repository.PanierRepository;
 @Service
 public class PanierServiceImp implements PanierService {
@@ -22,7 +23,9 @@ public class PanierServiceImp implements PanierService {
 	}	
 
 	@Override
-	public Panier addPanier(Panier p) {
+	public Panier addPanier(User u) {
+		Panier p=new Panier();
+		p.setU(u);
 		this.pr.save(p);
 		return p;
 	}
