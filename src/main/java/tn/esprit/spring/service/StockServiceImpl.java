@@ -70,5 +70,11 @@ public class StockServiceImpl implements StockService{
 
 		}
 	        }
+
+	@Override
+	public void deleteStock(Long id) {
+		// TODO Auto-generated method stub
+		ESR.deleteById(id);
+	}
 	
 }

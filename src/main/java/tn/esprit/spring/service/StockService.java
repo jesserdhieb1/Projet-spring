@@ -17,4 +17,5 @@ public interface StockService {
 	List<Stock> findByDate(Date date);
 
 	void status();
+	void deleteStock(Long id);
 }
