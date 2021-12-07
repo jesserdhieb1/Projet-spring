@@ -3,7 +3,6 @@ package tn.esprit.spring.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +29,7 @@ public class PanierServiceImp implements PanierService {
 
 	@Override
 	public Panier updatePanier(Panier p) {
-		this.pr.save(p);
+		this.pr.save(p)                                    ;
 		return p;
 	}
 
@@ -42,6 +41,10 @@ public class PanierServiceImp implements PanierService {
 	@Override
 	public void deletePanier(Long id) {
 		this.pr.deleteById(id);
+	}
+	@Override
+	public Panier getPanierByUser(Long user_id) {
+		return this.pr.getPanierByIdRep(user_id);
 	}
 	
 	

@@ -2,8 +2,8 @@ package tn.esprit.spring.controller;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +24,9 @@ public class PanierRestController {
 	@Autowired  
 	PanierServiceImp panierServImp;
 	
-	
-	// http://localhost:8090/SpringMVC/servelet/panier/retrieve-all-paniers
+	// http://localhost:8090/SpringMVC/panier/retrieve-all-paniers
+
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/retrieve-all-paniers")
 	@ResponseBody
 	List<Panier> getAllPaniers(){
@@ -34,6 +35,7 @@ public class PanierRestController {
 	
 	// http://localhost:8090/SpringMVC/servelet/panier/retrieve-panier/{panierId}
 	@GetMapping("/retrieve-panier/{panierId}")  
+	@CrossOrigin(origins = "http://localhost:4200")
 	@ResponseBody
 	private Optional<Panier> getPanier(@PathVariable("panierId") Long panierId)   
 	{  
@@ -42,6 +44,7 @@ public class PanierRestController {
 	
 	// http://localhost:8090/SpringMVC/servelet/panier/remove-panier/{panierId}
 	@DeleteMapping("/remove-panier/{panierId}")  
+	@CrossOrigin(origins = "http://localhost:4200")
 	@ResponseBody
 	private void deletePanier(@PathVariable("panierId") Long panierId)   
 	{  
@@ -61,6 +64,12 @@ public class PanierRestController {
 		public Panier addPanier(@RequestBody Panier p) {
 			return this.panierServImp.addPanier(p);
 		}
+		@GetMapping("panier-by-user/{user_id}")
+		@ResponseBody
+		public Panier getPanierBuUserId(@PathVariable("user_id") Long user_id) {
+			return this.panierServImp.getPanierByUser(user_id);
+		}
+		
 
 	
 }

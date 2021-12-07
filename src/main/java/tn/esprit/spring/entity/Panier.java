@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -32,7 +35,7 @@ public class Panier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long idPanier;
-	
+    @JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="p")
 	 Set<DetailFacture> detailFacture;
 	
@@ -40,5 +43,8 @@ public class Panier {
 	 int nombreArticle;
 	
 	 float montantRemise;
+	 
+	 @OneToOne
+	 User u;
 
 }
