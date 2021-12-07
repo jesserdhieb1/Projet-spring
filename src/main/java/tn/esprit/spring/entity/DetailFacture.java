@@ -37,10 +37,10 @@ public class DetailFacture implements Serializable {
     @Column(name="idDetailFacture")
     
     Long idDetailFacture;
-    
-    int qte;
+    @Column(columnDefinition = "int default 1")
+    int qte=1;
     float prixTotal;
-    int porcentageRemise;
+    //int porcentageRemise;
     float montantRemise;
     
     @ManyToOne
