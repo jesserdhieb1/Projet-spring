@@ -44,6 +44,9 @@ public class User implements Serializable {
     private CategorieUser CategorieUser;
     private Profession Profession;
     private Role role;
+    private String picture;
+    private Integer phoneNumber;
+    private String adresse;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private Set<Facture> facture;
