@@ -1,6 +1,7 @@
 package tn.esprit.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,8 @@ import tn.esprit.spring.entity.Produit;
 import tn.esprit.spring.service.ProduitServiceImpl;
 
 @RestController
-@RequestMapping("/produit")
+@CrossOrigin(origins = "*" )
+@RequestMapping("/product")
 public class ProduitRestController {
 
 	@Autowired
@@ -34,6 +36,8 @@ public class ProduitRestController {
 
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
+	
+
 		@GetMapping("/retrieve-all-produits")
 		@ResponseBody
 		@ApiOperation(value = "Récupérer la liste des produits")
@@ -46,11 +50,9 @@ public class ProduitRestController {
 
 
 	@PostMapping("/addProduit")
-	@ResponseBody
 	@ApiOperation(value = "Ajouter un nouveau produit")
-	public Produit addProduit(@RequestBody Produit pp){
-		Produit p1= p.addProduit(pp);
-		return p1;
+	public List<Produit> addProduit(@RequestBody Produit pp){
+		return p.addProduit(pp);
 	}
 
 	@PutMapping("/update")

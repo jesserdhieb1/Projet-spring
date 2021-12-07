@@ -20,9 +20,9 @@ public class ProduitServiceImpl implements ProduitService{
 	    ProduitRepository produitRepository;
 	    
 		@Override
-	    public Produit addProduit(Produit produit) {
+	    public List<Produit> addProduit(Produit produit) {
 	        produitRepository.save(produit);
-			return produit;
+			return produitRepository.findAll();
 
 
 	    }

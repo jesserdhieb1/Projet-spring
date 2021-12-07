@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 public interface ProduitService {
-	Produit addProduit(Produit produit);
+	List<Produit> addProduit(Produit produit);
 
 	Produit getProduitById(long id);
 

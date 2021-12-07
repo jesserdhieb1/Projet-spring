@@ -43,6 +43,7 @@ public class User implements Serializable {
     private String password;
     private CategorieUser CategorieUser;
     private Profession Profession;
+   
     private Role role;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
