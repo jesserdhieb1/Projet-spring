@@ -24,15 +24,18 @@ import java.util.Set;
 @ToString
 @JsonIdentityInfo(
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "idProduit")
+		  property = "id")
 public class Produit implements Serializable {
    //aaa
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idProduit")
-    private Long idProduit;
+    @Column(name="id")
+    private Long id;
     private String code;
     private String libelle;
+    private String picture;
+    private String description;
+    private Long nbrLike;
     private float prixUnitaire;
    
     @JsonManagedReference
