@@ -26,11 +26,12 @@ public class Stock implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idStock")
-     long idStock;
+     long id;
     int qte;
     int qteMin;
     Date date;
      String libelleStock;
+     String logo;
     @OneToMany (mappedBy ="s")
     List<Produit> pE;
     @OneToOne
