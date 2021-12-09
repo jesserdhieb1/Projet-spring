@@ -34,8 +34,7 @@ public class Stock implements Serializable  {
      String logo;
     @OneToMany (mappedBy ="s")
     List<Produit> pE;
-    @OneToOne
-     Fournisseur f;
+ 
 
 
 }
