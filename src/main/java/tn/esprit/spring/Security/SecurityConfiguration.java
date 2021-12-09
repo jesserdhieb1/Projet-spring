@@ -19,19 +19,19 @@ import tn.esprit.spring.service.UserDetailsService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserDetailsService userDetailsService;
+    UserDetailsService userDetailsServicePersonal;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(userDetailsServicePersonal).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter =new CustomAuthenticationFilter(authenticationManagerBean());
         http.authorizeRequests() .antMatchers("/SpringMVC**").permitAll()
-                //.anyRequest().authenticated()// access with auth
+                //.anyRequest().authenticated()// access with auth (token)
                 .anyRequest().permitAll()//to permit all request without login a la place de  .authenticated()
                 .and()
                 .httpBasic().and().csrf().disable()

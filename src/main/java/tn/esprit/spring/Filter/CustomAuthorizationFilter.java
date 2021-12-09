@@ -35,9 +35,9 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request,response);
         }else {
             String authorizationHeader = request.getHeader(AUTHORIZATION);
-            if (authorizationHeader!=null&&authorizationHeader.startsWith("Bearer ")){
-                try {
-                    String token = authorizationHeader.substring("Bearer ".length());//get the token
+            if (authorizationHeader!=null&&authorizationHeader.startsWith("Bearer_")){
+
+                    String token = authorizationHeader.substring("Bearer_".length());//get the token
                     Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());//getting the same algorithm
                     JWTVerifier verifier= JWT.require(algorithm).build();//creating the verifier
                     DecodedJWT decodedJWT =verifier.verify(token);
@@ -52,17 +52,8 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                             new UsernamePasswordAuthenticationToken(username,null,authorities);
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                     filterChain.doFilter(request,response);
-                }
-                catch (Exception exception){
-                    log.info("Error logging in : {}",exception.getMessage());
-                    response.setHeader("error",exception.getMessage());
-                    response.setStatus(FORBIDDEN.value());
-                    //response.sendError(FORBIDDEN.value());
-                    Map<String,String> error =new HashMap<>();
-                    error.put("error_message",exception.getMessage());
-                    response.setContentType(APPLICATION_JSON_VALUE);
-                    new ObjectMapper().writeValue(response.getOutputStream(),error);
-                }
+
+
             }else {
                 filterChain.doFilter(request,response);
             }
