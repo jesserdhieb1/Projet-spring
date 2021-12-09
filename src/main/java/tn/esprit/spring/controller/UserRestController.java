@@ -52,6 +52,18 @@ public class UserRestController {
         return userService.MailExists(email);
     }
 
-
+    @PostMapping("/register")
+    public String registerUser(@RequestBody User user){
+        String msg="";
+        Optional<User> userExists = userService.FindUserByEmail(user.getEmail());
+        if (userExists.isPresent()){
+            msg = "user already registered with the email provided";
+        }
+        else {
+            msg="200 OK";
+            userService.addUser(user);
+        }
+        return msg;
+    }
 
 }
