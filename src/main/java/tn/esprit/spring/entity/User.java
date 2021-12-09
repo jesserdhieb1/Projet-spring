@@ -47,7 +47,7 @@ public class User implements Serializable {
     private Role role;
     private String picture;
     private Integer phoneNumber;
-    private String adresse;
+    private String adresse;//test
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private Set<Facture> facture;
