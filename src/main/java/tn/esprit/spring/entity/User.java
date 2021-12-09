@@ -10,7 +10,6 @@ import lombok.Setter;
 import lombok.ToString;
 import tn.esprit.spring.enumeration.CategorieUser;
 import tn.esprit.spring.enumeration.Profession;
-import tn.esprit.spring.enumeration.Role;
 
 import java.util.Set;
 
@@ -43,11 +42,13 @@ public class User implements Serializable {
     private String password;
     private CategorieUser CategorieUser;
     private Profession Profession;
-   
-    private Role role;
+
     private String picture;
     private Integer phoneNumber;
     private String adresse;//test
+
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    private Set<Role> role;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private Set<Facture> facture;
