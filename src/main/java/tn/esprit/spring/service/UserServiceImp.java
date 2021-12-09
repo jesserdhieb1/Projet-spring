@@ -1,6 +1,7 @@
 package tn.esprit.spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.AvisUser;
 import tn.esprit.spring.entity.Facture;
@@ -19,6 +20,8 @@ public class UserServiceImp implements UserService{
 
     private final UserRepository userRepository;
 
+    BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
+
     @Autowired
     public UserServiceImp(UserRepository userRepository){this.userRepository=userRepository;}
 
@@ -33,6 +36,7 @@ public class UserServiceImp implements UserService{
         Set<Facture> Factures=Collections.emptySet();
         u.setAvisUser(Avis);
         u.setFacture(Factures);
+        u.setPassword(bCryptPasswordEncoder.encode(u.getPassword()));
         userRepository.save(u);
         return u;
     }
@@ -44,6 +48,13 @@ public class UserServiceImp implements UserService{
 
     @Override
     public User updateUser(User u) {
+        Optional<User> UserExists = userRepository.findById(u.getIdUser());
+        if (UserExists.isPresent()){
+            User user =UserExists.get();
+            if (u.getPassword()!=user.getPassword()){
+                u.setPassword(bCryptPasswordEncoder.encode(u.getPassword()));
+            }
+        }
         userRepository.save(u);
         return u;
     }
