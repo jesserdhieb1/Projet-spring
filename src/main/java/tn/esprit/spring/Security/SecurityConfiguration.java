@@ -9,7 +9,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import tn.esprit.spring.Filter.CustomAuthenticationFilter;
+import tn.esprit.spring.Filter.CustomAuthorizationFilter;
 import tn.esprit.spring.service.UserDetailsService;
 
 @Configuration
@@ -28,16 +30,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter =new CustomAuthenticationFilter(authenticationManagerBean());
-        http.authorizeRequests() .antMatchers("/SpringMVC**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/getRevenuBrutProduit/{idProduit}/{startDate}/{endDate}").access("hasRole('SUPERADMIN')")
-                .antMatchers("/get**}").access("hasRole('ADMIN')")
-                .antMatchers("/retrieve-all-clients").access("hasRole('ADMIN')")
-                .anyRequest()
-                .authenticated()
-                //.anyRequest().permitAll()//to permit all request without login a la place de  .authenticated()
+        http.authorizeRequests() .antMatchers("/SpringMVC**").permitAll()
+                //.anyRequest().authenticated()// access with auth
+                .anyRequest().permitAll()//to permit all request without login a la place de  .authenticated()
                 .and()
                 .httpBasic().and().csrf().disable()
-                .addFilter(customAuthenticationFilter);
+                .addFilter(customAuthenticationFilter)
+                .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
