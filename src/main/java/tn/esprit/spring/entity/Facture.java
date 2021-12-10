@@ -2,6 +2,10 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +29,9 @@ import java.util.Set;
 @FieldDefaults(level=AccessLevel.PRIVATE)	
 
 @Table(name="facture")
-
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idFacture")
 public class Facture implements Serializable {
     
     @Id
@@ -37,8 +43,10 @@ public class Facture implements Serializable {
     @Temporal(TemporalType.DATE)
     Date dateFacture;
     boolean active;
+   // @JsonBackReference
     @ManyToOne
     User user;
+    
     @OneToMany(mappedBy = "f",cascade = CascadeType.ALL)
     Set<DetailFacture> detailFacture;
 
