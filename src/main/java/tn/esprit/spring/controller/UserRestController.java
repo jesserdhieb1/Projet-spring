@@ -1,9 +1,12 @@
 package tn.esprit.spring.controller;
 
+import lombok.Getter;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
+import tn.esprit.spring.enumeration.RoleName;
 import tn.esprit.spring.service.UserServiceImp;
 
 import java.util.List;
@@ -68,8 +71,24 @@ public class UserRestController {
     }
 
     @PostMapping("/change-role-user")
-    public User ChangeUserRole(@RequestBody User user){
-        //return userService.ChangeRole(user.getRole().,user.getIdUser());
+    public User ChangeUserRole(@RequestBody RoleUser roleUser ){
+       try {
+           RoleName roleName = RoleName.valueOf(roleUser.get_Role());
+           return userService.ChangeRole(roleName,roleUser.get_idUser());
+       }
+       catch (Exception e){
+           System.out.println(e);
+           System.out.println("role"+roleUser.get_Role());
+           System.out.println("role"+roleUser.get_idUser());
+           System.out.println("roleUser : "+roleUser.toString());
+       }
+       return null;
     }
 
+}
+@Getter
+@ToString
+class RoleUser{
+    private Long _idUser;
+    private String _Role;
 }

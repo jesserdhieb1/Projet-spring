@@ -30,8 +30,8 @@ class SpringProjectApplicationTests {
         Date date = dateFormat.parse("2015-03-23");
         User u1 = new User("jesser","dhieb",date,"jessser@gmail.com", "123", CategorieUser.Prenuim, Profession.Etudiant);
         userService.addUser(u1);*/
-        Role r =new Role(2L, RoleName.SIMPLE);
-        userService.ChangeRole(r, 1L);
+        //Role r =new Role(2L, RoleName.SIMPLE);
+        userService.ChangeRole(RoleName.SIMPLE, 1L);
     }
 
 }
