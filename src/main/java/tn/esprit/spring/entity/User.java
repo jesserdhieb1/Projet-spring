@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 import tn.esprit.spring.enumeration.CategorieUser;
 import tn.esprit.spring.enumeration.Profession;
+import tn.esprit.spring.enumeration.RoleName;
 
 import java.util.Set;
 

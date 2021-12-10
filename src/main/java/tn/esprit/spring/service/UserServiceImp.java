@@ -3,10 +3,7 @@ package tn.esprit.spring.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import tn.esprit.spring.entity.AvisUser;
-import tn.esprit.spring.entity.Facture;
-import tn.esprit.spring.entity.Role;
-import tn.esprit.spring.entity.User;
+import tn.esprit.spring.entity.*;
 import tn.esprit.spring.enumeration.CategorieUser;
 import tn.esprit.spring.enumeration.RoleName;
 import tn.esprit.spring.repository.RoleRepository;
@@ -148,5 +145,31 @@ public class UserServiceImp implements UserService{
         }
         return null;
     }
+
+   /* public void assignModelToUser(ModelUser modelUser,User user) {
+        try{
+            user.setIdUser(modelUser.getIdUSer());
+            user.setNom(modelUser.getNom());
+            user.setPrenom(modelUser.getPrenom());
+            user.setDateNaissance(modelUser.getDateNaissance());
+            user.setEmail(modelUser.getEmail());
+            user.setPassword(modelUser.getPassword());
+            user.setCategorieUser(modelUser.getCategorieUser());
+            user.setProfession(modelUser.getProfession());
+            user.setPicture(modelUser.getPicture());
+            user.setPhoneNumber(modelUser.getPhoneNumber());
+            user.setAdresse(modelUser.getAdresse());
+            user.setFacture(modelUser.getFacture());
+            user.setAvisUser( modelUser.getAvisUser());
+            RoleName roleName = RoleName.valueOf(modelUser.getRole());
+            Role roleUser =Rolerepository.findByRole(roleName);
+            user.getRole().clear();
+            user.getRole().add(roleUser);
+        }
+        catch (Exception exception){
+            System.out.println(exception);
+        }
+
+    }*/
 
 }
