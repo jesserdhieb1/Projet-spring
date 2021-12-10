@@ -50,8 +50,8 @@ public class DetailFacture implements Serializable {
     @ManyToOne
     Produit produit;
     
-    @JsonBackReference
+    /*@JsonBackReference
     @ManyToOne
-    Panier p;
+    Panier p;*/
     
 }

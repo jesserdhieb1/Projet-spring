@@ -1,4 +1,4 @@
-package tn.esprit.spring.controller;
+/*package tn.esprit.spring.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -59,17 +59,17 @@ public class PanierRestController {
 	}
 	
 	// http://localhost:8090/SpringMVC/servelet/panier/add-panier	
-		@PostMapping("/add-panier")
+		/*@PostMapping("/add-panier")
 		@ResponseBody
 		public Panier addPanier(@RequestBody Panier p) {
 			return this.panierServImp.addPanier(p);
-		}
-		@GetMapping("panier-by-user/{user_id}")
+		}*/
+		/*@GetMapping("panier-by-user/{user_id}")
 		@ResponseBody
 		public Panier getPanierBuUserId(@PathVariable("user_id") Long user_id) {
 			return this.panierServImp.getPanierByUser(user_id);
-		}
+		}*/
 		
 
-	
-}
+	/*
+}*/
