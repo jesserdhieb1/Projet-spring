@@ -11,9 +11,9 @@ import tn.esprit.spring.service.UserServiceImp;
 
 import java.util.List;
 import java.util.Optional;
-
-@RestController
 @CrossOrigin(origins = "*")
+@RestController
+
 @RequestMapping("/user")
 public class UserRestController {
     @Autowired
