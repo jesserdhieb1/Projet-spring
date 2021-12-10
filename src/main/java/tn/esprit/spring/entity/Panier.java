@@ -1,4 +1,4 @@
-package tn.esprit.spring.entity;
+/*package tn.esprit.spring.entity;
 
 import java.util.Set;
 
@@ -48,3 +48,4 @@ public class Panier {
 	 User u;
 
 }
+*/

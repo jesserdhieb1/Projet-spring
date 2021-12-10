@@ -19,17 +19,19 @@ import java.util.List;
 //import javax.validation.Valid;
 
 import tn.esprit.spring.entity.Produit;
-
-
+import tn.esprit.spring.repository.ProduitRepository;
 import tn.esprit.spring.service.ProduitServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "*" )
+//@CrossOrigin(origins = "*" )
 @RequestMapping("/product")
 public class ProduitRestController {
 
 	@Autowired
 	ProduitServiceImpl p;
+	@Autowired 
+	ProduitRepository pr;
+	
 	public  ProduitRestController(ProduitServiceImpl p){
 		this.p=p;
 	}
@@ -37,7 +39,7 @@ public class ProduitRestController {
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	
-
+		@CrossOrigin(origins = "http://localhost:4200")
 		@GetMapping("/retrieve-all-produits")
 		@ResponseBody
 		@ApiOperation(value = "Récupérer la liste des produits")
@@ -73,5 +75,11 @@ public class ProduitRestController {
 		p.deleteProduit(produitId);
 	}
 
-
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/getProduit/{produit-id}")
+	@ResponseBody
+	public Produit getProduit(@PathVariable("produit-id") Long produitId) {
+		return this.pr.findById(produitId).get();
+	}
+	
 }
