@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entity.Panier;
+import tn.esprit.spring.entity.User;
 import tn.esprit.spring.service.PanierServiceImp;
 
 @RestController
@@ -61,7 +62,7 @@ public class PanierRestController {
 	// http://localhost:8090/SpringMVC/servelet/panier/add-panier	
 		/*@PostMapping("/add-panier")
 		@ResponseBody
-		public Panier addPanier(@RequestBody Panier p) {
+		public Panier addPanier(@RequestBody User p) {//changement du panier p vers user p
 			return this.panierServImp.addPanier(p);
 		}*/
 		/*@GetMapping("panier-by-user/{user_id}")

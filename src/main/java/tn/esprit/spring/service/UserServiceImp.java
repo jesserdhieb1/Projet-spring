@@ -1,26 +1,28 @@
 package tn.esprit.spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import tn.esprit.spring.entity.AvisUser;
-import tn.esprit.spring.entity.Facture;
-import tn.esprit.spring.entity.User;
+import tn.esprit.spring.entity.*;
 import tn.esprit.spring.enumeration.CategorieUser;
-import tn.esprit.spring.enumeration.Role;
+import tn.esprit.spring.enumeration.RoleName;
+import tn.esprit.spring.repository.RoleRepository;
 import tn.esprit.spring.repository.UserRepository;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class UserServiceImp implements UserService{
 
     private final UserRepository userRepository;
+    private final RoleRepository Rolerepository;
+
+    BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository){this.userRepository=userRepository;}
+    public UserServiceImp(UserRepository userRepository, RoleRepository repository){this.userRepository=userRepository;
+        this.Rolerepository = repository;
+    }
 
     @Override
     public List<User> retrivaAllUsers() {
@@ -33,6 +35,7 @@ public class UserServiceImp implements UserService{
         Set<Facture> Factures=Collections.emptySet();
         u.setAvisUser(Avis);
         u.setFacture(Factures);
+        u.setPassword(bCryptPasswordEncoder.encode(u.getPassword()));
         userRepository.save(u);
         return u;
     }
@@ -44,6 +47,13 @@ public class UserServiceImp implements UserService{
 
     @Override
     public User updateUser(User u) {
+        /*Optional<User> UserExists = userRepository.findById(u.getIdUser());
+        if (UserExists.isPresent()){
+            User user =UserExists.get();
+            if (!bCryptPasswordEncoder.matches(u.getPassword(),user.getPassword())){
+                u.setPassword(bCryptPasswordEncoder.encode(u.getPassword()));
+            }
+        }*/
         userRepository.save(u);
         return u;
     }
@@ -66,11 +76,23 @@ public class UserServiceImp implements UserService{
         return false;
     }
 
+    @Override
+    public Role getRolebyRoleName(RoleName role) {
+        return Rolerepository.findByRole(role);
+    }
 
 
     @Override
-    public User ChangeRole(Role role, Long id) {
-        return userRepository.ChangeRole(role,id);
+    public User ChangeRole(RoleName role, Long id) {
+        Optional<User> U =userRepository.findById(id);
+        Role roleUser =Rolerepository.findByRole(role);
+        User user = U.get();
+        if (user!=null&&roleUser!=null){
+            user.getRole().clear();
+            user.getRole().add(roleUser);
+            userRepository.save(user);
+        }
+        return user;
     }
 
     @Override
@@ -124,5 +146,30 @@ public class UserServiceImp implements UserService{
         return null;
     }
 
+   /* public void assignModelToUser(ModelUser modelUser,User user) {
+        try{
+            user.setIdUser(modelUser.getIdUSer());
+            user.setNom(modelUser.getNom());
+            user.setPrenom(modelUser.getPrenom());
+            user.setDateNaissance(modelUser.getDateNaissance());
+            user.setEmail(modelUser.getEmail());
+            user.setPassword(modelUser.getPassword());
+            user.setCategorieUser(modelUser.getCategorieUser());
+            user.setProfession(modelUser.getProfession());
+            user.setPicture(modelUser.getPicture());
+            user.setPhoneNumber(modelUser.getPhoneNumber());
+            user.setAdresse(modelUser.getAdresse());
+            user.setFacture(modelUser.getFacture());
+            user.setAvisUser( modelUser.getAvisUser());
+            RoleName roleName = RoleName.valueOf(modelUser.getRole());
+            Role roleUser =Rolerepository.findByRole(roleName);
+            user.getRole().clear();
+            user.getRole().add(roleUser);
+        }
+        catch (Exception exception){
+            System.out.println(exception);
+        }
+
+    }*/
 
 }
