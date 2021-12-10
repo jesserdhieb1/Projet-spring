@@ -2,9 +2,9 @@ package tn.esprit.spring.service;
 
 import tn.esprit.spring.entity.AvisUser;
 import tn.esprit.spring.entity.Facture;
+import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.enumeration.CategorieUser;
-import tn.esprit.spring.enumeration.Role;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +18,7 @@ public interface UserService {
     Optional<User>retriveUser(Long id);
     Optional<User> FindUserByEmail(String email);
     boolean MailExists(String email);
-    User ChangeRole(Role role,Long id);
+    User ChangeRole(Role role, Long id);
     User ChangeCategorie(CategorieUser categorie, Long id);
     User AssignFactureToUser(Facture F,Long idUser );
     Set<Facture> AfficherFacturesParUser(Long idUser);

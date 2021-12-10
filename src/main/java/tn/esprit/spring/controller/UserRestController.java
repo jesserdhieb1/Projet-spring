@@ -2,6 +2,7 @@ package tn.esprit.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.service.UserServiceImp;
 
@@ -64,6 +65,11 @@ public class UserRestController {
             userService.addUser(user);
         }
         return msg;
+    }
+
+    @PostMapping("/change-role-user")
+    public User ChangeUserRole(@RequestBody User user){
+        //return userService.ChangeRole(user.getRole().,user.getIdUser());
     }
 
 }

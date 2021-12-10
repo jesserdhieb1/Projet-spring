@@ -21,10 +21,6 @@ public interface UserRepository extends CrudRepository<User,Long> {
     User findByEmail2(String email);
 
     @Modifying
-    @Query("UPDATE User U SET U.role=?1 WHERE U.idUser=?2")
-    User ChangeRole(Role role, Long id);
-
-    @Modifying
     @Query("UPDATE User U SET U.CategorieUser=?1 WHERE U.idUser=?2")
     User ChangeCategorie(CategorieUser categorie, Long id);
 }
