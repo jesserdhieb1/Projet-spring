@@ -4,11 +4,15 @@ import lombok.Getter;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.spring.entity.ModelUser;
 import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
+import tn.esprit.spring.enumeration.CategorieUser;
+import tn.esprit.spring.enumeration.Profession;
 import tn.esprit.spring.enumeration.RoleName;
 import tn.esprit.spring.service.UserServiceImp;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +49,17 @@ public class UserRestController {
         userService.updateUser(u);
         return u;
     }
+/*    @PostMapping("modify-user-1")
+    public User modifyUser1(@RequestBody ModelUser u){
+        try{
+        User user= new User();
+        userService.assignModelToUser(u,user);
+        return userService.updateUser(user);}
+        catch (Exception e){
+            System.out.println("exeption : "+e);
+            return null;
+        }
+    }*/
 
     @GetMapping("/find-user-by-email")
     public Optional<User> find_user_by_email(@RequestParam String email){
@@ -92,3 +107,4 @@ class RoleUser{
     private Long _idUser;
     private String _Role;
 }
+
