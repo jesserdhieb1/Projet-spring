@@ -5,9 +5,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.AvisUser;
 import tn.esprit.spring.entity.Facture;
+import tn.esprit.spring.entity.Role;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.enumeration.CategorieUser;
-import tn.esprit.spring.enumeration.Role;
 import tn.esprit.spring.repository.UserRepository;
 
 import java.util.Collections;
@@ -81,7 +81,14 @@ public class UserServiceImp implements UserService{
 
     @Override
     public User ChangeRole(Role role, Long id) {
-        return userRepository.ChangeRole(role,id);
+        Optional<User> U =userRepository.findById(id);
+        User user = U.get();
+        if (user!=null){
+            user.getRole().clear();
+            user.getRole().add(role);
+            userRepository.save(user);
+        }
+        return user;
     }
 
     @Override
@@ -134,6 +141,5 @@ public class UserServiceImp implements UserService{
         }
         return null;
     }
-
 
 }
