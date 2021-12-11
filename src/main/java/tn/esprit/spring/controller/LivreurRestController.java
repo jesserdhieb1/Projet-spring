@@ -2,6 +2,7 @@ package tn.esprit.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,26 +13,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.entity.Livraison;
 import tn.esprit.spring.entity.Livreur;
+import tn.esprit.spring.repository.LivraisonRepository;
+import tn.esprit.spring.service.LivraisonServiceImpl;
 import tn.esprit.spring.service.LivreurService;
 import tn.esprit.spring.service.LivreurServiceImpl;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/livreur")
 public class LivreurRestController {
 	@Autowired
 	LivreurServiceImpl livreurService;
+	@Autowired
+	LivraisonRepository lr;
 
-	// http://localhost:8090/SpringMVC/livreur/retrieve-all-livreurs
-	@GetMapping("/retrieve-all-livreurs")
-	@ResponseBody
-	public List<Livreur> getlivreurs() {
-	List<Livreur> listlivreurs = livreurService.retrieveAllLivreurs();
-	return listlivreurs;
-	}
+	    // http://localhost:8090/SpringMVC/livreur/retrieve-all-livreurs
+	    @GetMapping("/retrieve-all-livreurs")
+	    @ResponseBody
+	    public List<Livreur> getlivreurs() {
+	    List<Livreur> listlivreurs = livreurService.retrieveAllLivreurs();
+	    return listlivreurs;
+	    }
+	
+	    // http://localhost:8090/SpringMVC/livreur/retrieve-livraisons/{livreur-id}
+	    @GetMapping("/retrieve-livraisons/{livreur-id}")
+	    @ResponseBody
+	    public List<Livraison> getlivraisons(@PathVariable("livreur-id") Long LivreurId) {
+	    List<Livraison> listlivreurs = lr.findByIdLivreur(LivreurId);
+	    return listlivreurs;
+	    }
 	
 
-   // Ajouter Livreur : http://localhost:8090/SpringMVC/livreur/add-livreur
+       // Ajouter Livreur : http://localhost:8090/SpringMVC/livreur/add-livreur
+		   @CrossOrigin(origins = "*", allowedHeaders = "*")
 		  @PostMapping("/add-livreur")
 		  @ResponseBody
 		  public Livreur addLivreur(@RequestBody Livreur u) {
@@ -40,14 +56,15 @@ public class LivreurRestController {
 		  }
 		  
 		  
-	// http://localhost:8090/SpringMVC/livreur/remove-livreur/{livreur-id}
+	   // http://localhost:8090/SpringMVC/livreur/remove-livreur/{livreur-id}
 		   @DeleteMapping("/remove-livreur/{livreur-id}")
 		   @ResponseBody
 		   public void removeLivreur(@PathVariable("livreur-id") Long LivreurId) {
 		   livreurService.deleteLivreur(LivreurId);
 		   }
 		  
-   // http://localhost:8090/SpringMVC/livreur/modify-Livreur
+       // http://localhost:8090/SpringMVC/livreur/modify-Livreur
+		   @CrossOrigin(origins = "*", allowedHeaders = "*")
 		   @PutMapping("/modify-livreur")
 		   @ResponseBody
 		   public Livreur modifyLivreur(@RequestBody Livreur Livreur) {
@@ -55,10 +72,10 @@ public class LivreurRestController {
 		   }
 	  
 		// http://localhost:8090/SpringMVC/livreur/retrieve-livreur/{livreur-id}
-			 @GetMapping("/retrieve-livreur/{livreur-id}")
-			 @ResponseBody
-			 public Livreur retrievelivreur(@PathVariable("livreur-id") Long livreurId) {
-			 return livreurService.retrieveLivreur(livreurId);
-			  }
+		   @GetMapping("/retrieve-livreur/{livreur-id}")
+		   @ResponseBody
+		   public Livreur retrievelivreur(@PathVariable("livreur-id") Long livreurId) {
+		   return livreurService.retrieveLivreur(livreurId);
+		   }
 	
 }

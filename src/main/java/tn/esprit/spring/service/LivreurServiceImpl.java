@@ -39,7 +39,14 @@ public class LivreurServiceImpl implements LivreurService {
 
 	@Override
 	public Livreur updateLivreur(Livreur L) {
-		lr.save(L);
+		Livreur lnew= new Livreur();
+		lnew= L;
+		lnew.setNomLiv(L.getNomLiv());
+		lnew.setPrenomLiv(L.getPrenomLiv());
+		lnew.setAdresseLiv(L.getAdresseLiv());
+		lnew.setVilleLiv(L.getVilleLiv());
+		lnew.setMdpLiv(L.getMdpLiv());
+		lr.save(lnew);
 		return L;
 	}
 

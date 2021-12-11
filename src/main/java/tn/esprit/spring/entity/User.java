@@ -2,6 +2,8 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -63,9 +65,11 @@ public class User implements Serializable {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Facture> facture;
 
     @OneToMany(mappedBy = "user_avis",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<AvisUser> avisUser;
 
 
