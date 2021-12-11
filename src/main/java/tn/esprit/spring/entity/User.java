@@ -1,6 +1,10 @@
 package tn.esprit.spring.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -46,9 +50,11 @@ public class User implements Serializable {
     private Role role;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Facture> facture;
 
     @OneToMany(mappedBy = "user_avis",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<AvisUser> avisUser;
 
 

@@ -2,6 +2,10 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +29,7 @@ import java.util.Set;
 @FieldDefaults(level=AccessLevel.PRIVATE)	
 
 @Table(name="facture")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class Facture implements Serializable {
     
@@ -39,6 +44,7 @@ public class Facture implements Serializable {
     boolean active;
     @ManyToOne
     User user;
+    
     @OneToMany(mappedBy = "f",cascade = CascadeType.ALL)
     Set<DetailFacture> detailFacture;
 
