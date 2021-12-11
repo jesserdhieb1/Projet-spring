@@ -22,6 +22,7 @@ import tn.esprit.spring.entity.Fournisseur;
 //import javax.validation.Valid;
 
 import tn.esprit.spring.entity.Produit;
+import tn.esprit.spring.entity.Stock;
 import tn.esprit.spring.repository.ProduitRepository;
 import tn.esprit.spring.service.ProduitServiceImpl;
 
@@ -53,6 +54,11 @@ public class ProduitRestController {
 
 		}
 
+		
+		
+		
+		
+		
 		//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/addProduit")
 	@ApiOperation(value = "Ajouter un nouveau produit")
