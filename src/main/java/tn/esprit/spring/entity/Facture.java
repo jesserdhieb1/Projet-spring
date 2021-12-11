@@ -5,6 +5,9 @@ import javax.persistence.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -31,6 +34,10 @@ import java.util.Set;
 @Table(name="facture")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
+
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idFacture")
 public class Facture implements Serializable {
     
     @Id
@@ -42,6 +49,7 @@ public class Facture implements Serializable {
     @Temporal(TemporalType.DATE)
     Date dateFacture;
     boolean active;
+   // @JsonBackReference
     @ManyToOne
     User user;
     

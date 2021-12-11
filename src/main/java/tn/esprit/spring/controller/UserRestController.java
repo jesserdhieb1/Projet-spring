@@ -1,14 +1,26 @@
 package tn.esprit.spring.controller;
 
+import lombok.Getter;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.spring.entity.ModelUser;
+import tn.esprit.spring.entity.Role;
+import tn.esprit.spring.entity.RoleUser;
 import tn.esprit.spring.entity.User;
+import tn.esprit.spring.enumeration.CategorieUser;
+import tn.esprit.spring.enumeration.Profession;
+import tn.esprit.spring.enumeration.RoleName;
 import tn.esprit.spring.service.UserServiceImp;
 
+import java.awt.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/user")
 public class UserRestController {
     @Autowired
@@ -35,10 +47,62 @@ public class UserRestController {
         userService.delteUser(id);
     }
 
-    @PutMapping("modify-user")
+    @PutMapping( "modify-user")
+    @ResponseBody
     public User modifyUser(@RequestBody User u){
-        userService.updateUser(u);
-        return u;
+        return userService.updateUser(u);
+    }
+/*    @PostMapping("modify-user-1")
+    public User modifyUser1(@RequestBody ModelUser u){
+        try{
+        User user= new User();
+        userService.assignModelToUser(u,user);
+        return userService.updateUser(user);}
+        catch (Exception e){
+            System.out.println("exeption : "+e);
+            return null;
+        }
+    }*/
+
+    @GetMapping("/find-user-by-email")
+    public Optional<User> find_user_by_email(@RequestParam String email){
+        return userService.FindUserByEmail(email);
+    }
+
+    @GetMapping("/email-exists")
+    public boolean MailExists(@RequestParam String email){
+        return userService.MailExists(email);
+    }
+
+    @PostMapping(path = "/register",consumes=MediaType.APPLICATION_JSON_VALUE)
+    public String registerUser(@RequestBody User user){
+        String msg="";
+        Optional<User> userExists = userService.FindUserByEmail(user.getEmail());
+        if (userExists.isPresent()){
+            msg = "user already registered with the email provided";
+        }
+        else {
+            msg="200 OK";
+            userService.addUser(user);
+        }
+        return msg;
+    }
+
+    @PostMapping("/change-role-user")
+    public User ChangeUserRole(@RequestBody RoleUser roleUser ){
+       try {
+           RoleName roleName = RoleName.valueOf(roleUser.get_Role());
+           return userService.ChangeRole(roleName,roleUser.get_idUser());
+       }
+       catch (Exception e){
+           System.out.println(e);
+           System.out.println("role"+roleUser.get_Role());
+           System.out.println("role"+roleUser.get_idUser());
+           System.out.println("roleUser : "+roleUser.toString());
+       }
+       return null;
     }
 
 }
+
+

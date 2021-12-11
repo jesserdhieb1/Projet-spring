@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.Fournisseur;
 import tn.esprit.spring.service.FournisseurServiceImpl;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/fournisseur")
 public class FournisseurRestController {
@@ -64,4 +66,25 @@ public class FournisseurRestController {
 	public Fournisseur modifyFournisseur(@RequestBody Fournisseur fournisseur) {
 	return fournisseurService.updateFournisseur(fournisseur);
 	}
+	// http://localhost:8089/SpringMVC/fournisseur/retrouver-fournisseur-parLibelle/"PC"
+		@GetMapping("/retrouver-fournisseur-parLibelle/{fournisseur-libelle}")
+		@ResponseBody
+		@ApiOperation(value = "Récupérer le fournisseur par son libelle")
+		public List<Fournisseur>  findByLibelle(@PathVariable("fournisseur-libelle") String fournisseurLibelle) {
+		return fournisseurService.findByLibelle(fournisseurLibelle);
+		}
+		// http://localhost:8089/SpringMVC/fournisseur/retrouver-fournisseur-parCode/"f-456"
+			@GetMapping("/retrouver-fournisseur-parCode/{fournisseur-code}")
+			@ResponseBody
+			@ApiOperation(value = "Récupérer le fournisseur par son code")
+			public List<Fournisseur>  findByCode(@PathVariable("fournisseur-code") String fournisseurCode) {
+			return fournisseurService.findByCode(fournisseurCode);
+			}
+			// http://localhost:8089/SpringMVC/fournisseur/retrouver-fournisseur-parAdresse/"PC"
+					@GetMapping("/retrouver-fournisseur-parAdresse/{fournisseur-adresse}")
+					@ResponseBody
+					@ApiOperation(value = "Récupérer le fournisseur par son Adresse")
+					public List<Fournisseur> findByAdresse(@PathVariable("fournisseur-adresse") String fournisseurAdresse) {
+					return fournisseurService.findByAdresse(fournisseurAdresse);
+					}
 }

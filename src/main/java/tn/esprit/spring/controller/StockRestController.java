@@ -1,8 +1,11 @@
 package tn.esprit.spring.controller;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.Stock;
 import tn.esprit.spring.service.StockServiceImpl;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/stock")
 public class StockRestController {
@@ -48,12 +51,28 @@ public class StockRestController {
 			Stock stock = StockService.addStock(c);
 		return stock;
 		}
-		// http://localhost:8089/SpringMVC/stock/modify-stock
+		// http://localhost:8090/SpringMVC/stock/modify-stock
 		@PutMapping("/modify-stock")
 		@ResponseBody
 		@ApiOperation(value = "Modifier stock")
 		public Stock modifyStock(@RequestBody Stock stock) {
 		return StockService.updateStock(stock);
 		}
+		// http://localhost:8090/SpringMVC/stock/retrouver-stock-parDate/08-22-1997
+				@GetMapping("/retrouver-stock-parDate/{stock-date}")
+				@ResponseBody
+				@ApiOperation(value = "Récupérer les  stocks par date")
+				public List<Stock> findByDate(@PathVariable("stock-date") Date stockdate) {
+				return StockService.findByDate(stockdate);
+				}
+				// http://localhost:8089/SpringMVC/stock/remove-stock/{stock-id}
+				@DeleteMapping("/remove-stock/{stock-id}")
+				@ResponseBody
+				@ApiOperation(value = "Supprimer stock")
+				public void removeStock(@PathVariable("stock-id") Long stockId) {
+					StockService.deleteStock(stockId);
+				}
+				
+				
 }
 
