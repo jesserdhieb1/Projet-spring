@@ -31,7 +31,7 @@ class SpringProjectApplicationTests {
         User u1 = new User("jesser","dhieb",date,"jessser@gmail.com", "123", CategorieUser.Prenuim, Profession.Etudiant);
         userService.addUser(u1);*/
         //Role r =new Role(2L, RoleName.SIMPLE);
-        userService.ChangeRole(RoleName.SIMPLE, 1L);
+        //userService.ChangeRole(RoleName.SIMPLE, 1L);
     }
 
 }

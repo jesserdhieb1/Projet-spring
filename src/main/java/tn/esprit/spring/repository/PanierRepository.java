@@ -1,4 +1,4 @@
-package tn.esprit.spring.repository;
+/*package tn.esprit.spring.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -10,3 +10,4 @@ public interface PanierRepository extends CrudRepository<Panier, Long> {
 	@Query(value="SELECT * FROM `panier` WHERE panier.u_id_user = :id_user",nativeQuery = true)
 	Panier getPanierByIdRep(Long id_user);
 }
+*/

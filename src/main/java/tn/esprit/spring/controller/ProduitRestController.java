@@ -16,20 +16,25 @@ import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
 
+import tn.esprit.spring.entity.Facture;
+import tn.esprit.spring.entity.Fournisseur;
+
 //import javax.validation.Valid;
 
 import tn.esprit.spring.entity.Produit;
-
-
+import tn.esprit.spring.repository.ProduitRepository;
 import tn.esprit.spring.service.ProduitServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*" )
-@RequestMapping("/product")
+@RequestMapping("/produit")
 public class ProduitRestController {
 
 	@Autowired
 	ProduitServiceImpl p;
+	@Autowired 
+	ProduitRepository pr;
+	
 	public  ProduitRestController(ProduitServiceImpl p){
 		this.p=p;
 	}
@@ -37,7 +42,7 @@ public class ProduitRestController {
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	
-
+		//@CrossOrigin(origins = "http://localhost:4200")
 		@GetMapping("/retrieve-all-produits")
 		@ResponseBody
 		@ApiOperation(value = "Récupérer la liste des produits")
@@ -48,20 +53,27 @@ public class ProduitRestController {
 
 		}
 
-
+		//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/addProduit")
 	@ApiOperation(value = "Ajouter un nouveau produit")
-	public List<Produit> addProduit(@RequestBody Produit pp){
-		return p.addProduit(pp);
+	public Produit addProduit(@RequestBody Produit pp){
+			Produit produit=p.addProduit(pp);
+		return produit;
 	}
+		
+		
+	
+		
+		
 
-	@PutMapping("/update")
+	@PutMapping("/modifier_produit")
+	@ResponseBody
 	@ApiOperation(value = "Modifier un produit")
 
 	public Produit updateProduitC(@RequestBody Produit pp) {
-		Produit p1 = p.updateProduit(pp);
-		return p1;
+		return p.updateProduit(pp);
 	}
+	
 
 
 
@@ -72,6 +84,21 @@ public class ProduitRestController {
 	public void removeProduit(@PathVariable("produit-id") Long produitId) {
 		p.deleteProduit(produitId);
 	}
+	
+	
+	
+	
 
-
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/getProduit/{produit-id}")
+	@ResponseBody
+	public Produit getProduit(@PathVariable("produit-id") Long produitId) {
+		return this.pr.findById(produitId).get();
+	}
+	
+	
+	
+	
+	
+	
 }
