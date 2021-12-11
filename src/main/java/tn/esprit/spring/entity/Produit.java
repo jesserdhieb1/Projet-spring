@@ -43,17 +43,20 @@ public class Produit implements Serializable {
     @OneToMany(mappedBy = "produit",cascade = CascadeType.ALL)
     private Set<DetailFacture> detailFacture;
     
+    @JsonIgnore
     @ManyToOne
     private Rayon rayon;
     
+    @JsonIgnore
     @ManyToOne
     private Stock s;
-    
+    @JsonIgnore
     @OneToOne
     private DetailProduit Detailproduit;
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Fournisseur> fornisseur;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "produit_avis",cascade = CascadeType.ALL)
     private Set<AvisUser> avisProduit;
     @Column(columnDefinition = "int default 0")
