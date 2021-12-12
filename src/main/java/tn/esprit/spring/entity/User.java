@@ -64,7 +64,7 @@ public class User implements Serializable {
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private Set<Role> role;
 
-    @JsonIgnore
+   // @JsonIgnore
    // @JsonManagedReference
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     @JsonIgnore
