@@ -9,7 +9,7 @@ import tn.esprit.spring.entity.Produit;
 public interface DetailFactureService {
 
 	List<DetailFacture> getAllDetailFacture();
-	DetailFacture addDetailFacture(Long idProduit );
+	DetailFacture addDetailFacture(Long idProduit,Long idFacture,int qte );
 	DetailFacture updateDetailFacture(DetailFacture f);
 
 	Optional<DetailFacture> retrieveDetailFacture(Long id);
