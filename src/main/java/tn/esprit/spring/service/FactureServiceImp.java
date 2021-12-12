@@ -1,6 +1,7 @@
 package tn.esprit.spring.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class FactureServiceImp implements FactureService{
 	FactureRepository fR;
 	@Autowired
 	UserRepository uR;
+	
 	@Override
 	public List<Facture> getAllFacture() {
 		List<Facture> Factures = new ArrayList<Facture>();  
@@ -28,20 +30,22 @@ public class FactureServiceImp implements FactureService{
 	@Override
 	public Facture addFacture(Facture f,Long user_id) {
 		User u= uR.findById(user_id).get();
+		f.setDateFacture(new Date());
 		f.setUser(u);
 		return this.fR.save(f);
 	}
 
 	@Override
 	public Facture updateFacture(Facture f) {
-		this.fR.save(f);
-		return f;
+		return this.fR.save(f);	
 	}
 
 	@Override
 	public Optional<Facture> retrieveFacture(Long id) {
 		return Optional.ofNullable(this.fR.findById(id).get());
 	}
-	
-	
+	@Override
+	public Long getPrixTotalFacture(Long idFacture) {
+		return this.fR.getPrixTotalF(idFacture);
+	}
 }
