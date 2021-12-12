@@ -3,8 +3,11 @@ package tn.esprit.spring.service;
 import java.util.Date;
 import java.util.List;
 
+import org.jvnet.hk2.annotations.Service;
+
 import tn.esprit.spring.entity.Livraison;
 
+@Service
 public interface LivraisonService {
 
 	   public List<Livraison> retrieveAllLivraisons();

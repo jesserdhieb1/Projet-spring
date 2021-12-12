@@ -12,19 +12,18 @@ import tn.esprit.spring.entity.Livreur;
 
 
 @Repository
-
 public interface LivreurRepository extends CrudRepository<Livreur, Long>{
 
-	//@Query("SELECT l FROM Livreur l WHERE l.NomLiv like %?1 or l.PrenomLiv like %?1")
+	@Query("SELECT l FROM Livreur l WHERE l.NomLiv like %?1 or l.PrenomLiv like %?1")
 	List<Livreur> findByName(String key);
 	
-	//@Query("SELECT l FROM Livreur l WHERE l.VilleLiv like %?1")
+    @Query("SELECT l FROM Livreur l WHERE l.VilleLiv like %?1")
 	List<Livreur> findByCity(String key);
 	
-	//@Query("SELECT l FROM Livreur l ORDER BY NomLiv ASC")
+	@Query("SELECT l FROM Livreur l ORDER BY NomLiv ASC")
 	List<Livreur> SortUp();
 	
-	//@Query("SELECT l FROM Livreur l Order BY NomLiv DESC")
+	@Query("SELECT l FROM Livreur l Order BY NomLiv DESC")
 	List<Livreur> SortDown();
 	
 	
