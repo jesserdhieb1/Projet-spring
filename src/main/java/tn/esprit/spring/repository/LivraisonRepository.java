@@ -12,7 +12,7 @@ import tn.esprit.spring.entity.Livraison;
 
 @Repository
 public interface LivraisonRepository extends CrudRepository<Livraison, Long>{
-
+//
 	
 	@Query("SELECT lvr FROM Livraison lvr WHERE lvr.L.id = ?1 ")
 	List<Livraison> findByIdLivreur(Long key);
