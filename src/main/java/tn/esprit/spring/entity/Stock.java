@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,6 +37,7 @@ public class Stock implements Serializable  {
     Date date;
      String libelleStock;
      String logo;
+     @JsonIgnore
     @OneToMany (mappedBy ="s")
     List<Produit> pE;
  
