@@ -26,9 +26,7 @@ import java.io.Serializable;
 @ToString
 @RequiredArgsConstructor
 @FieldDefaults(level=AccessLevel.PRIVATE)
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "idDetailFacture")
+
 public class DetailFacture implements Serializable {
     
 
@@ -40,7 +38,7 @@ public class DetailFacture implements Serializable {
     @Column(columnDefinition = "int default 1")
     int qte=1;
     float prixTotal;
-    //int porcentageRemise;
+   
     float montantRemise;
     
     @ManyToOne
@@ -50,8 +48,6 @@ public class DetailFacture implements Serializable {
     @ManyToOne
     Produit produit;
     
-    /*@JsonBackReference
-    @ManyToOne
-    Panier p;*/
+   
     
 }

@@ -11,6 +11,7 @@ import tn.esprit.spring.entity.DetailFacture;
 import tn.esprit.spring.entity.Facture;
 import tn.esprit.spring.entity.Produit;
 import tn.esprit.spring.repository.DetailFactureRepository;
+import tn.esprit.spring.repository.FactureRepository;
 @Service
 public class DetailFactureServiceImp implements DetailFactureService{
 
@@ -18,6 +19,8 @@ public class DetailFactureServiceImp implements DetailFactureService{
 	DetailFactureRepository dFR;  
 	@Autowired  
 	ProduitServiceImpl psi;
+	@Autowired  
+	FactureRepository fR;
 	
 	@Override
 	public List<DetailFacture> getAllDetailFacture() {
@@ -27,13 +30,15 @@ public class DetailFactureServiceImp implements DetailFactureService{
 	}
 
 	@Override
-	public DetailFacture addDetailFacture(Long idProduit) {
+	public DetailFacture addDetailFacture(Long idProduit, Long idFacture,int qte) {
 		DetailFacture df= new DetailFacture();
+		
 		df.setProduit(this.psi.getProduitById(idProduit));
-		df.setPrixTotal(this.psi.getProduitById(idProduit).getPrixUnitaire()*df.getQte());
-		df.setMontantRemise((this.psi.getProduitById(idProduit).getPourcentageRemise()*df.getPrixTotal())/100);
-		this.dFR.save(df);
-		return df; 
+		df.setPrixTotal(this.psi.getProduitById(idProduit).getPrixUnitaire()*qte);
+		df.setMontantRemise((this.psi.getProduitById(idProduit).getPourcentageRemise()*df.getPrixTotal())*qte/100);
+		df.setF(this.fR.findById(idFacture).get());
+		df.setQte(qte);
+		return this.dFR.save(df); 
 	}
 
 	@Override
@@ -45,7 +50,7 @@ public class DetailFactureServiceImp implements DetailFactureService{
 	@Override
 	public Optional<DetailFacture> retrieveDetailFacture(Long id) {
 		return Optional.ofNullable(this.dFR.findById(id).get());
-		
 	}
+
 	
 }

@@ -5,6 +5,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -63,7 +64,8 @@ public class User implements Serializable {
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private Set<Role> role;
 
-    @JsonManagedReference
+    @JsonIgnore
+   // @JsonManagedReference
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Facture> facture;

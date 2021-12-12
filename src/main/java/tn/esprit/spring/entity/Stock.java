@@ -20,7 +20,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of= {"id","name,","qte","date","libelleStock"})
+@ToString(of= {"id","name","qteMin","qte","date","libelleStock"})
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public class Stock implements Serializable  {
     @Id
