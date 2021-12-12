@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entity.Fournisseur;
 import tn.esprit.spring.entity.Produit;
 
 import tn.esprit.spring.repository.ProduitRepository;
@@ -20,7 +21,7 @@ public class ProduitServiceImpl implements ProduitService{
 	    ProduitRepository produitRepository;
 	    
 		@Override
-	    public List<Produit> addProduit(Produit produit) {
+	    public List<Produit> addProduits(Produit produit) {
 	        produitRepository.save(produit);
 			return produitRepository.findAll();
 
@@ -50,5 +51,12 @@ public class ProduitServiceImpl implements ProduitService{
 	@Override
 	public void deleteProduit(long idProduit) {
 		produitRepository.deleteById(idProduit);
+	}
+	
+	@Override
+	public Produit addProduit(Produit produit) {
+		// TODO Auto-generated method stub
+	produitRepository.save(produit);
+	return produit;
 	}
 }

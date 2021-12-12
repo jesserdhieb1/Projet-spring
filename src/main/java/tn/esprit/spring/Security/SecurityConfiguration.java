@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter =new CustomAuthenticationFilter(authenticationManagerBean());
-        http.authorizeRequests() .antMatchers("/SpringMVC**").permitAll()
+        http.authorizeRequests() .antMatchers("*").permitAll()
                 //.anyRequest().authenticated()// access with auth (token)
                 .anyRequest().permitAll()//to permit all request without login a la place de  .authenticated()
                 .and()

@@ -20,14 +20,16 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of= {"idStock","qte","date","libelleStock","pE"})
+@ToString(of= {"id","name","qteMin","qte","date","libelleStock"})
 @FieldDefaults(level=AccessLevel.PRIVATE)
 public class Stock implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idStock")
      long id;
+    String name;
     int qte;
+    
     int qteMin;
     Date date;
      String libelleStock;

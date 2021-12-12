@@ -2,6 +2,9 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,6 +33,9 @@ import java.util.Set;
 @FieldDefaults(level=AccessLevel.PRIVATE)	
 
 @Table(name="facture")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
+
 @JsonIdentityInfo(
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
 		  property = "idFacture")

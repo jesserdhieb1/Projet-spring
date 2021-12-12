@@ -3,21 +3,24 @@ package tn.esprit.spring.controller;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.ModelUser;
 import tn.esprit.spring.entity.Role;
+import tn.esprit.spring.entity.RoleUser;
 import tn.esprit.spring.entity.User;
 import tn.esprit.spring.enumeration.CategorieUser;
 import tn.esprit.spring.enumeration.Profession;
 import tn.esprit.spring.enumeration.RoleName;
 import tn.esprit.spring.service.UserServiceImp;
 
+import java.awt.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins = "*")
 @RestController
-
+@CrossOrigin(origins = "*")
 @RequestMapping("/user")
 public class UserRestController {
     @Autowired
@@ -44,10 +47,10 @@ public class UserRestController {
         userService.delteUser(id);
     }
 
-    @PutMapping("modify-user")
+    @PutMapping( "modify-user")
+    @ResponseBody
     public User modifyUser(@RequestBody User u){
-        userService.updateUser(u);
-        return u;
+        return userService.updateUser(u);
     }
 /*    @PostMapping("modify-user-1")
     public User modifyUser1(@RequestBody ModelUser u){
@@ -71,7 +74,7 @@ public class UserRestController {
         return userService.MailExists(email);
     }
 
-    @PostMapping("/register")
+    @PostMapping(path = "/register",consumes=MediaType.APPLICATION_JSON_VALUE)
     public String registerUser(@RequestBody User user){
         String msg="";
         Optional<User> userExists = userService.FindUserByEmail(user.getEmail());
@@ -101,10 +104,5 @@ public class UserRestController {
     }
 
 }
-@Getter
-@ToString
-class RoleUser{
-    private Long _idUser;
-    private String _Role;
-}
+
 

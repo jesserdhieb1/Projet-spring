@@ -2,6 +2,8 @@ package tn.esprit.spring.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -10,13 +12,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Date;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import tn.esprit.spring.enumeration.CategorieUser;
 import tn.esprit.spring.enumeration.Profession;
-import tn.esprit.spring.enumeration.RoleName;
 
 import java.util.Set;
 
@@ -25,10 +23,16 @@ import java.util.Set;
 @Setter
 @Getter
 @NoArgsConstructor
+
+
+
+
+@AllArgsConstructor
 @ToString
 @JsonIdentityInfo(
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
 		  property = "idUser")
+
 public class User implements Serializable {
     public User(String nom, String prenom, Date dateNaissance, String email, String password, CategorieUser categorieUser, Profession profession) {
         this.nom = nom;
@@ -55,7 +59,7 @@ public class User implements Serializable {
 
     private String picture;
     private Integer phoneNumber;
-    private String adresse;//test
+    private String adresse;
 
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private Set<Role> role;
@@ -63,9 +67,11 @@ public class User implements Serializable {
     @JsonIgnore
    // @JsonManagedReference
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Facture> facture;
 
     @OneToMany(mappedBy = "user_avis",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<AvisUser> avisUser;
 
 
