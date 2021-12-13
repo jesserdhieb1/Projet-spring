@@ -12,8 +12,8 @@ import tn.esprit.spring.entity.Livreur;
 
 
 @Repository
-
 public interface LivreurRepository extends CrudRepository<Livreur, Long>{
+
 
        @Query("SELECT l FROM Livreur l WHERE l.NomLiv like %?1 or l.PrenomLiv like %?1")
 	List<Livreur> findByName(String key);
