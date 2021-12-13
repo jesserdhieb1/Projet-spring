@@ -18,6 +18,7 @@ public interface LivraisonService {
 		
 		Livraison updateLivraison(Livraison L);
 		
+		Livraison deliverLivraison(Long id);
 		Livraison retrieveLivraison(Long id);
 		
 		public List<Livraison> FindByIdLivreur(Long id);

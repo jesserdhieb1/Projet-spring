@@ -79,6 +79,13 @@ public class LivraisonRestController {
 		   return livraisonService.updateLivraison(livraison);
 		   }
 	  
+			  
+		   // http://localhost:8090/SpringMVC/livraison/deliver-livraison/{lid}
+				   @PutMapping("/deliver-livraison/{lid}")
+				   @ResponseBody
+				   public Livraison deliverLivraison(@PathVariable("lid") Long lid) {
+				   return livraisonService.deliverLivraison(lid);
+				   }
 		// http://localhost:8090/SpringMVC/livraison/retrieve-livraison/{livraison-id}
 			 @GetMapping("/retrieve-livraison/{livraison-id}")
 			 @ResponseBody
