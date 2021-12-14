@@ -1,6 +1,10 @@
 package tn.esprit.spring.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.io.Serializable;
 import java.util.Set;
 import lombok.Getter;
@@ -12,6 +16,9 @@ import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @Entity
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idRayon")
 @Table
 @Setter
 @Getter
