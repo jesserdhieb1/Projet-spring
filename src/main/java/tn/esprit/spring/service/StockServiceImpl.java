@@ -76,5 +76,12 @@ public class StockServiceImpl implements StockService{
 		// TODO Auto-generated method stub
 		ESR.deleteById(id);
 	}
+	/*@Override
+	public List<Produit> statStock(Long idS) {
+	
+		List<Produit> listProduit =this.ESR.findPByS(idS);
+		return (List<Produit>) listProduit;
+	}*/
+	
 	
 }

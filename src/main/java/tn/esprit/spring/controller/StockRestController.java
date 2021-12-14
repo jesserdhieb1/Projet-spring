@@ -72,6 +72,15 @@ public class StockRestController {
 				public void removeStock(@PathVariable("stock-id") Long stockId) {
 					StockService.deleteStock(stockId);
 				}
+				/*
+				// http://localhost:8090/SpringMVC/stock/stat-stocks/2
+				@GetMapping("/stat-stocks/{stockId}")
+				@ResponseBody
+				@ApiOperation(value = "Récupérer les produit de stock ")
+				public List<Produit> getProduits(@PathVariable("stockId") Long stockId) {
+					return this.StockService.statStock(stockId);				
+						
+				}*/
 				
 				
 }
