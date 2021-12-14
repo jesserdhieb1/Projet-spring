@@ -65,5 +65,15 @@ public class LivraisonServiceImpl implements LivraisonService {
 		lvr.save(lv);
 		return lv;
 	}
+	@Override
+	public int CountDelivered() {
+         int x= lvr.CountDelivered();
+         return x;
+	}
+	@Override
+	public int CountUndelivered() {
+        int x= lvr.CountUndelivered();
+		return x;
+	}
 
 }
