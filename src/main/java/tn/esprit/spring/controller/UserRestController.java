@@ -41,6 +41,16 @@ public class UserRestController {
         userService.addUser(u);
         return u;
     }
+    @PostMapping("/add-admin-user")
+    public User addAdminUser(@RequestBody User u){
+        userService.addAdminUser(u);
+        return u;
+    }
+    @PostMapping("/add-simple-user")
+    public User addSimpleUser(@RequestBody User u){
+        userService.addSimpleUser(u);
+        return u;
+    }
 
     @DeleteMapping("remove-user/{user-id}")
     public void deleteUser(@PathVariable("user-id") Long id){
@@ -103,6 +113,20 @@ public class UserRestController {
        return null;
     }
 
+    @PostMapping("/authenticate-user")
+    public User Authenticate(@RequestBody ModelUser u){
+        return  userService.Authenticate(u.getEmail(),u.getPassword());
+    }
+
+    @PostMapping("/reset-password-user")
+    public User ResetPassword(@RequestBody ModelUser u){
+        return  userService.ResetPassword(u.getEmail(),u.getPassword());
+    }
+
+    @PostMapping("/verify-password-user")
+    public boolean verifyPassword(@RequestBody ModelUser u){
+        return  userService.verifyPassword(u.getEmail(),u.getPassword());
+    }
 }
 
 

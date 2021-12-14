@@ -34,9 +34,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //.anyRequest().authenticated()// access with auth (token)
                 .anyRequest().permitAll()//to permit all request without login a la place de  .authenticated()
                 .and()
-                .httpBasic().and().csrf().disable()
-                .addFilter(customAuthenticationFilter)
-                .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+                .httpBasic().and().csrf().disable();
+               /* .addFilter(customAuthenticationFilter)
+                .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);*/
     }
 
     @Bean

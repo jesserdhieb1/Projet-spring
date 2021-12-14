@@ -56,7 +56,6 @@ public class User implements Serializable {
     private String password;
     private CategorieUser CategorieUser;
     private Profession Profession;
-
     private String picture;
     private Integer phoneNumber;
     private String adresse;
@@ -67,7 +66,6 @@ public class User implements Serializable {
     @JsonIgnore
    // @JsonManagedReference
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Facture> facture;
 
     @OneToMany(mappedBy = "user_avis",cascade = CascadeType.ALL)

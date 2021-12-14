@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<User,Long> {
 
-    @Query("SELECT U FROM User U WHERE U.email like %?1")
+    @Query("SELECT U FROM User U WHERE U.email like ?1")
     Optional<User> findByEmail(String email);
 
     @Query("SELECT U FROM User U WHERE U.email like %?1")

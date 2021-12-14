@@ -18,7 +18,7 @@ public class UserController {
     UserServiceImp userServiceImp;*/
 
     @PostMapping(path = "test-add",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public AppUser test(@RequestBody AppUser role){
+    public User test(@RequestBody User role){
         return role;
     }
 
