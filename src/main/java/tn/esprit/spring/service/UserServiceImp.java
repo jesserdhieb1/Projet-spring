@@ -41,6 +41,26 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
+    public User addAdminUser(User u) {
+        Role roleUser =Rolerepository.findByRole(RoleName.ADMIN);
+        u.setPassword(bCryptPasswordEncoder.encode(u.getPassword()));
+        Set<Role> role=new HashSet<>();
+        role.add(roleUser);
+        u.setRole(role);
+        return userRepository.save(u);
+    }
+
+    @Override
+    public User addSimpleUser(User u) {
+        Role roleUser =Rolerepository.findByRole(RoleName.SIMPLE);
+        u.setPassword(bCryptPasswordEncoder.encode(u.getPassword()));
+        Set<Role> role=new HashSet<>();
+        role.add(roleUser);
+        u.setRole(role);
+        return userRepository.save(u);
+    }
+
+    @Override
     public void delteUser(Long id) {
         userRepository.deleteById(id);
     }
@@ -70,10 +90,40 @@ public class UserServiceImp implements UserService{
 
     @Override
     public boolean MailExists(String email) {
-        if (userRepository.findByEmail(email).isPresent()){
-            return true;
+        return userRepository.findByEmail(email).isPresent();
+    }
+
+    @Override
+    public User Authenticate(String email, String password) {
+        Optional<User> UserExists=userRepository.findByEmail(email);
+        if(UserExists.isPresent()){
+            User user=UserExists.get();
+            if (bCryptPasswordEncoder.matches(password,user.getPassword())){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean verifyPassword(String email, String password) {
+        Optional<User> UserExists=userRepository.findByEmail(email);
+        if(UserExists.isPresent()){
+            User user=UserExists.get();
+            return bCryptPasswordEncoder.matches(password, user.getPassword());
         }
         return false;
+    }
+
+    @Override
+    public User ResetPassword(String email, String password) {
+        Optional<User> UserExists=userRepository.findByEmail(email);
+        if(UserExists.isPresent()){
+            User user=UserExists.get();
+            user.setPassword(bCryptPasswordEncoder.encode(password));
+            return userRepository.save(user);
+        }
+        return null;
     }
 
     @Override
