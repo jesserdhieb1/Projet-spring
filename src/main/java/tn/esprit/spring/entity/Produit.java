@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.ColumnDefault;
 
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -19,6 +19,9 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "id")
 @Table
 @Setter
 @Getter
@@ -39,7 +42,8 @@ public class Produit implements Serializable {
     private Long nbrLike;
     private float prixUnitaire;
    
-    @JsonIgnore
+   // 
+   @JsonIgnore
     @OneToMany(mappedBy = "produit",cascade = CascadeType.ALL)
     private Set<DetailFacture> detailFacture;
     
@@ -50,10 +54,10 @@ public class Produit implements Serializable {
     @JsonIgnore
     @ManyToOne
     private Stock s;
-    @JsonIgnore
+   @JsonIgnore
     @OneToOne
     private DetailProduit Detailproduit;
-    @JsonIgnore
+   @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Fournisseur> fornisseur;
     @JsonIgnore

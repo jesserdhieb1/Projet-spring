@@ -4,6 +4,9 @@ import tn.esprit.spring.enumeration.CategorieProduit;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +17,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idDetailProduit")
 @Table
 @Setter
 @Getter

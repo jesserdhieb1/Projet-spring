@@ -59,4 +59,19 @@ public class ProduitServiceImpl implements ProduitService{
 	produitRepository.save(produit);
 	return produit;
 	}
+
+
+	@Override
+	public Produit modifierLike(long idProduit, boolean like) {
+		// TODO Auto-generated method stub
+		Produit p=this.produitRepository.findById(idProduit).get();
+		if (like)
+			p.setNbrLike(p.getNbrLike()+1);
+		else
+			p.setNbrLike(p.getNbrLike()-1);
+		return this.produitRepository.save(p);		
+	}
+	
+	
+	
 }
