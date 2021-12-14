@@ -19,6 +19,7 @@ public interface LivraisonService {
 		Livraison updateLivraison(Livraison L);
 		
 		Livraison deliverLivraison(Long id);
+		
 		Livraison retrieveLivraison(Long id);
 		
 		public List<Livraison> FindByIdLivreur(Long id);
@@ -26,5 +27,9 @@ public interface LivraisonService {
 		public List<Livraison> findByDate(Date d);
 		
 		public List<Livraison> orderByDate();
+		
+		int CountDelivered();
+		
+		int CountUndelivered();
 
 }

@@ -19,6 +19,7 @@ import tn.esprit.spring.repository.FactureRepository;
 import tn.esprit.spring.repository.LivreurRepository;
 import tn.esprit.spring.service.FactureServiceImp;
 import tn.esprit.spring.service.LivraisonServiceImpl;
+import tn.esprit.spring.service.LivreurService;
 import tn.esprit.spring.service.LivreurServiceImpl;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -43,23 +44,33 @@ public class LivraisonRestController {
 	return listlivraisons;
 	}
 	
+	    // http://localhost:8090/SpringMVC/livraison/count-delivered
+		@GetMapping("/count-delivered")
+		@ResponseBody
+		public int countDelivered() {
+		int x1 = livraisonService.CountDelivered();
+		return x1;
+		}
+		
+		// http://localhost:8090/SpringMVC/livraison/count-undelivered
+				@GetMapping("/count-undelivered")
+				@ResponseBody
+				public int countUndelivered() {
+				int x2 = livraisonService.CountUndelivered();
+				return x2;
+				}
 
-     //http://localhost:8090/SpringMVC/livraison/add-livraison
+     //http://localhost:8090/SpringMVC/livraison/add-livraison/{livreur-id}
 	      @CrossOrigin(origins = "*", allowedHeaders = "*")
-		  @PostMapping("/add-livraison/{livreur-id}/{facture-id}")
+		  @PostMapping("/add-livraison/{livreur-id}")
 		  @ResponseBody
 		  
 		  
-		  public Livraison addlivraison(@RequestBody Livraison u,@PathVariable("livreur-id") Long lid
-				  ,@PathVariable("facture-id") Long fid)
+		  public Livraison addlivraison(@RequestBody Livraison u,@PathVariable("livreur-id") Long lid)
 		  {
-	    	    System.out.println("la valeur de lid est"+lid);
-	    	  Livreur l= (Livreur) ls.retrieveLivreur(lid);
-	    	  Facture f= fr.findById(fid).get();
-	    	  u.setL(l);
-	    	  u.setF(f);
+	    	  Livreur liv = ls.retrieveLivreur(lid);
+	    	  u.setL(liv);
 		  Livraison livraison = livraisonService.addLivraison(u);
-		  
 		  return livraison;
 		  }
 		  
