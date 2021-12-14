@@ -37,6 +37,7 @@ public class Livraison implements Serializable {
 @GeneratedValue (strategy = GenerationType.IDENTITY )
 @Column(name="id")
 private Long id;
+@JsonIgnore
 @OneToOne
 private Facture F ;
 @JsonIgnore

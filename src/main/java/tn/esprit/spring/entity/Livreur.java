@@ -33,7 +33,7 @@ public class Livreur implements Serializable {
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 @Column(name="id")
-private Long id; 
+private Long id;
 private String NomLiv;
 private String PrenomLiv;
 private String VilleLiv;
@@ -42,6 +42,7 @@ private String MdpLiv;
 private int TelLiv;
 private Double LngLiv;
 private Double LatLiv;
+private Boolean status;
 @OneToMany(mappedBy="L")
 
 private List <Livraison> ListLivraisons;

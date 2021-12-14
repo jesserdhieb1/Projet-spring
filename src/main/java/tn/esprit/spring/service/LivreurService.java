@@ -13,6 +13,10 @@ public interface LivreurService{
 	
 	Livreur addLivreur(Livreur L);
 	
+	Livreur getByEmail(String email);
+	
+	Livreur connect(String email, String mdp);
+	
 	void deleteLivreur(Long id);
 	
 	Livreur updateLivreur(Livreur L);
@@ -24,6 +28,12 @@ public interface LivreurService{
 	List<Livreur> sortUp();
 	
 	List<Livreur> sortDown();
+	
+	String NotifyLivreurBySMS( Livreur l);
+	
+	List<Livreur> ShowHired();
+	
+	Livreur AcceptLivreur(Livreur L);
 	
 	List<Livreur> findByCity(String key);
 }

@@ -58,5 +58,22 @@ public class LivraisonServiceImpl implements LivraisonService {
 		return (List<Livraison>)lvr.orderByDate();
 
 	}
+	@Override
+	public Livraison deliverLivraison(Long id) {
+		Livraison lv = lvr.findById(id).get();
+		lv.setStatus(true);
+		lvr.save(lv);
+		return lv;
+	}
+	@Override
+	public int CountDelivered() {
+         int x= lvr.CountDelivered();
+         return x;
+	}
+	@Override
+	public int CountUndelivered() {
+        int x= lvr.CountUndelivered();
+		return x;
+	}
 
 }
