@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import tn.esprit.spring.entity.Livraison;
 import tn.esprit.spring.entity.Livreur;
 import tn.esprit.spring.repository.LivraisonRepository;
@@ -36,6 +37,14 @@ public class LivreurRestController {
 	    List<Livreur> listlivreurs = livreurService.retrieveAllLivreurs();
 	    return listlivreurs;
 	    }
+	    
+	    // http://localhost:8090/SpringMVC/livreur/show-hired
+	    @GetMapping("/show-hired")
+	    @ResponseBody
+	    public List<Livreur> show() {
+	    List<Livreur> listlivreurs = livreurService.ShowHired();
+	    return listlivreurs;
+	    }
 	
 	    // http://localhost:8090/SpringMVC/livreur/retrieve-livraisons/{livreur-id}
 	    @GetMapping("/retrieve-livraisons/{livreur-id}")
@@ -44,7 +53,7 @@ public class LivreurRestController {
 	    List<Livraison> listlivreurs = lr.findByIdLivreur(LivreurId);
 	    return listlivreurs;
 	    }
-	
+	   
 
        // Ajouter Livreur : http://localhost:8090/SpringMVC/livreur/add-livreur
 		   @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -70,6 +79,14 @@ public class LivreurRestController {
 		   public Livreur modifyLivreur(@RequestBody Livreur Livreur) {
 		   return livreurService.updateLivreur(Livreur);
 		   }
+		   
+		// http://localhost:8090/SpringMVC/livreur/accept-Livreur
+		   @CrossOrigin(origins = "*", allowedHeaders = "*")
+		   @PutMapping("/accept-Livreur")
+		   @ResponseBody
+		   public Livreur acceptLivreur(@RequestBody Livreur Livreur) {
+		   return livreurService.AcceptLivreur(Livreur);
+		   }
 	  
 		// http://localhost:8090/SpringMVC/livreur/retrieve-livreur/{livreur-id}
 		   @GetMapping("/retrieve-livreur/{livreur-id}")
@@ -77,5 +94,26 @@ public class LivreurRestController {
 		   public Livreur retrievelivreur(@PathVariable("livreur-id") Long livreurId) {
 		   return livreurService.retrieveLivreur(livreurId);
 		   }
+		   
+		// http://localhost:8090/SpringMVC/livreur/getByEmail/{email}
+		   @GetMapping("/getByEmail/{email}")
+		   @ResponseBody
+		   public Livreur getByEmail(@PathVariable("email") String email) {
+		   return livreurService.getByEmail(email);
+		   }
+		   
+		// http://localhost:8090/SpringMVC/livreur/connect/{email}/{mdp}
+		   @GetMapping("/connect/{email}/{mdp}")
+		   @ResponseBody
+		   public Livreur getByEmail(@PathVariable("email") String email,@PathVariable("mdp") String mdp) {
+		   return livreurService.connect(email, mdp);
+		   }
+		   
+		    @GetMapping("/sendSMS") 
+		    @ResponseBody
+			@ApiOperation(value = "SMS notif ")
+			public void sendSMSforLivreur(@RequestBody Livreur l) {
+		    	livreurService.NotifyLivreurBySMS(l);
+			}
 	
 }
