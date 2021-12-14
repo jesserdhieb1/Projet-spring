@@ -35,7 +35,7 @@ public class DetailFactureServiceImp implements DetailFactureService{
 		
 		df.setProduit(this.psi.getProduitById(idProduit));
 		df.setPrixTotal(this.psi.getProduitById(idProduit).getPrixUnitaire()*qte);
-		df.setMontantRemise((this.psi.getProduitById(idProduit).getPourcentageRemise()*df.getPrixTotal())*qte/100);
+		df.setMontantRemise((this.psi.getProduitById(idProduit).getPourcentageRemise()*df.getPrixTotal())/100);
 		df.setF(this.fR.findById(idFacture).get());
 		df.setQte(qte);
 		return this.dFR.save(df); 

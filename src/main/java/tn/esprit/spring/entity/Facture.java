@@ -21,6 +21,7 @@ import tn.esprit.spring.entity.DetailFacture;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -55,7 +56,7 @@ public class Facture implements Serializable {
     User user;
     
     @OneToMany(mappedBy = "f",cascade = CascadeType.ALL)
-    Set<DetailFacture> detailFacture;
+    List<DetailFacture> detailFacture;
 
     
 }
