@@ -11,7 +11,14 @@ import tn.esprit.spring.entity.Facture;
 public interface FactureService {
 	List<Facture> getAllFacture();
 	Facture addFacture(Facture f,Long user_id);
-	Facture updateFacture(Facture f);
+	Facture updateFactureStatus(Long idf,boolean status);
 	Optional<Facture> retrieveFacture(Long id);
 	Long getPrixTotalFacture(Long idFacture);
+	Long getMontantRemiseFacture(Long idFacture);
+	void deleteFacture(Long id);
+	Facture detailFacture(Long id);
+	List<Long> statsChiffreAffaire();
+	public List<Integer> achatsStats();
+	public List<Long> getDeuxChiffreAffaireMois();
+
 }

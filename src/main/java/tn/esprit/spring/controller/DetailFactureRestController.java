@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entity.DetailFacture;
 import tn.esprit.spring.service.DetailFactureServiceImp;
 
-@CrossOrigin(origins ="http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/DetailFacture")
 public class DetailFactureRestController {
 	@Autowired
 	DetailFactureServiceImp dfs;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/add-detailFacture/{idp}/{idf}/{qte}")
 	@ResponseBody
 	public DetailFacture addDetailFacture(@PathVariable Long idp,@PathVariable Long idf,@PathVariable int qte) {
@@ -29,7 +28,6 @@ public class DetailFactureRestController {
 	}
 	
 	
-	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/retreive-all-detailFacture")
 	@ResponseBody
 	public List<DetailFacture> getAllDetailFacture(){
