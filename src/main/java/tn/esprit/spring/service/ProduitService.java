@@ -17,5 +17,6 @@ public interface ProduitService {
 	List<Produit> retrieveAllProduits();
 	public Produit updateProduit(Produit p);
 	public void deleteProduit(long idProduit);
+	public Produit modifierLike(long  idProduit,boolean like);
 
 }

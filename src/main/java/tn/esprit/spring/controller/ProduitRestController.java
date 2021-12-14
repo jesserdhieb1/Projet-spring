@@ -26,8 +26,9 @@ import tn.esprit.spring.entity.Stock;
 import tn.esprit.spring.repository.ProduitRepository;
 import tn.esprit.spring.service.ProduitServiceImpl;
 
+
 @RestController
-@CrossOrigin(origins = "*" )
+@CrossOrigin(origins = "*", allowedHeaders = "*" )
 @RequestMapping("/produit")
 public class ProduitRestController {
 
@@ -95,15 +96,23 @@ public class ProduitRestController {
 	
 	
 
-	@CrossOrigin(origins = "http://localhost:4200")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/getProduit/{produit-id}")
 	@ResponseBody
+	@ApiOperation(value = "Afficher produit by id")
+
 	public Produit getProduit(@PathVariable("produit-id") Long produitId) {
 		return this.pr.findById(produitId).get();
 	}
 	
 	
-	
+	@GetMapping("modifierLike/{idProduit}/{like}")
+	@ResponseBody
+	@ApiOperation(value = "liked")
+	public Produit Liked(@PathVariable ("idProduit") Long idProduit, boolean like) {
+		
+		return p.modifierLike(idProduit, like);
+	}
 	
 	
 	
