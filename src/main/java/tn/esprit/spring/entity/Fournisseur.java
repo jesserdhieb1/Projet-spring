@@ -11,6 +11,8 @@ import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 @Entity
+
+
 @Table
 @Setter
 @Getter
@@ -18,6 +20,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @ToString(of= {"idFournissuer","code","libelle"})
 @FieldDefaults(level=AccessLevel.PRIVATE)
+
+
 public class Fournisseur implements Serializable {
 
 
